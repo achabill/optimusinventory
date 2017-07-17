@@ -3,6 +3,7 @@ package optimusinventory.api.models;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Acha Bill on 7/17/2017.
@@ -16,6 +17,8 @@ public class Debtor {
     @NotNull
     private int amount;
     private boolean isActive;
+    @NotNull
+    private List<Sale> sales;
 
     public Debtor() {
     }
@@ -65,5 +68,13 @@ public class Debtor {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 }
