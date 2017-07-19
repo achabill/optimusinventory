@@ -88,7 +88,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/previleges", method = RequestMethod.GET)
     @ApiOperation(value = "Gets all previleges", notes = "Gets all previleges")
     public ResponseEntity<List<Previleges>> getAllPrevileges(@RequestParam(value = "token", required = true) String token) throws Exception {
         verifyAdminToken(token);
