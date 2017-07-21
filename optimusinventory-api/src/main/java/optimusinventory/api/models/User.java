@@ -5,9 +5,6 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 public class User {
     @Id
     private String id;
@@ -15,7 +12,7 @@ public class User {
     private String username;
     @NotNull
     private String password;
-    private List<Previleges> previleges;
+    private List<Privilege> privileges;
     private String phoneNumber;
     private String email;
     private String firstName;
@@ -24,11 +21,11 @@ public class User {
     public User() {
     }
 
-    public User(String id, String username, String password, List<Previleges> previleges, String phoneNumber, String email, String firstName, String lastName) {
+    public User(String id, String username, String password, List<Privilege> privileges, String phoneNumber, String email, String firstName, String lastName) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.previleges = previleges;
+        this.privileges = privileges;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.firstName = firstName;
@@ -59,12 +56,12 @@ public class User {
         this.password = password;
     }
 
-    public List<Previleges> getPrevileges() {
-        return previleges;
+    public List<Privilege> getPrivileges() {
+        return privileges;
     }
 
-    public void setPrevileges(List<Previleges> previleges) {
-        this.previleges = previleges;
+    public void setPrivileges(List<Privilege> privileges) {
+        this.privileges = privileges;
     }
 
     public String getPhoneNumber() {

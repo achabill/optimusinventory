@@ -1,8 +1,5 @@
 package optimusinventory.api.auth;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

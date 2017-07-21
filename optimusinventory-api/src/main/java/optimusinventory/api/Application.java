@@ -5,8 +5,9 @@ package optimusinventory.api;
  */
 
 import optimusinventory.api.auth.ITokenService;
-import optimusinventory.api.dao.IUserDao;
-import optimusinventory.api.models.Previleges;
+import optimusinventory.api.dao.IUsersDao;
+import optimusinventory.api.helpers.IHelpers;
+import optimusinventory.api.models.Privilege;
 import optimusinventory.api.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -34,10 +35,16 @@ import java.util.List;
 @ComponentScan
 @EnableSwagger2
 public class Application {
-    @Autowired
-    IUserDao usersDao;
-    @Autowired
-    ITokenService tokenService;
+
+    private IUsersDao usersDao;
+    private IHelpers helpers;
+    private ITokenService tokenService;
+
+    public Application(IUsersDao usersDao, IHelpers helpers, ITokenService tokenService) {
+        this.usersDao = usersDao;
+        this.helpers = helpers;
+        this.tokenService = tokenService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -70,14 +77,7 @@ public class Application {
                 User root = new User();
                 root.setUsername("admin");
                 root.setPassword(tokenService.digest("admin@123"));
-                List<Previleges> previleges = new ArrayList() {{
-                    add(Previleges.MANAGE_SALES);
-                    add(Previleges.MANAGE_ITEMS);
-                    add(Previleges.MANAGE_DEBTORS);
-                    add(Previleges.MANAGE_ACCOUNTS);
-                    add(Previleges.MANAGE_SUMMARY);
-                }};
-                root.setPrevileges(previleges);
+                root.setPrivileges(helpers.getAllPrivileges());
                 usersDao.save(root);
             }
         };

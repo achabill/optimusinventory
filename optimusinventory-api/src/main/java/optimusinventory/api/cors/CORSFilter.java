@@ -1,8 +1,5 @@
 package optimusinventory.api.cors;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 
 import org.springframework.stereotype.Component;
 

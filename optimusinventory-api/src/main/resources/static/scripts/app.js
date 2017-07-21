@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name OptimusInventoryApp
- * @description
- * # Client app
- *
- * Main module of the application.
- */
 angular
     .module('OptimusInventoryApp', [
         'ngCookies',
@@ -19,7 +11,9 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/views/login.html'
+                templateUrl: '/views/login.html',
+                controller: 'LoginController',
+                controllerAs: 'ctrl'
             })
             .otherwise({
                 redirectTo: '/'

@@ -1,38 +1,19 @@
 package optimusinventory.api.models;
 
-import org.springframework.data.annotation.Id;
-
-import javax.validation.constraints.NotNull;
-
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 public class CartItem {
-    @Id
-    private String id;
-    @NotNull
     private StockItem stockItem;
-    @NotNull
     private int quantity;
     private int total;
 
     public CartItem() {
     }
 
-    public CartItem(String id, StockItem stockItem, int quantity, int total) {
-        this.id = id;
+    public CartItem(StockItem stockItem, int quantity, int total) {
         this.stockItem = stockItem;
         this.quantity = quantity;
         this.total = total;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public StockItem getStockItem() {
         return stockItem;

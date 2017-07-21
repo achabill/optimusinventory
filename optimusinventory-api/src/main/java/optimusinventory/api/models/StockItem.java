@@ -4,9 +4,6 @@ import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 public class StockItem {
     @Id
     private String id;

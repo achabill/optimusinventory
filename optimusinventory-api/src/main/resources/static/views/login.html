@@ -1,5 +1,21 @@
-<div class="login-background fill-page login-color">
-    <h3>This is Login</h3>
-    testing angular {{1 + 2}}. I'm expecting to see 3
-    We'll use tabs
+<div class="login-background">
+    <div class="main-div">
+        <p class="signin-label text-center">Sign in to OptimusInventory</p>
+        <div class="login-div">
+            <form>
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Username" required="true" data-error="Username is required" />
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <a href="#" class="pull-right">forgot password</a>
+                    <input type="password" id="password" class="form-control" placeholder="Password" required="true" data-error="Bro, you no get password?"/>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-success btn-block" ng-click="ctrl.getBaseEndPoint()">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

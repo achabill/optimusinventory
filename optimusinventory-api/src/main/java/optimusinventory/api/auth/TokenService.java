@@ -1,9 +1,5 @@
 package optimusinventory.api.auth;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
-
 import optimusinventory.api.models.User;
 import org.springframework.stereotype.Service;
 

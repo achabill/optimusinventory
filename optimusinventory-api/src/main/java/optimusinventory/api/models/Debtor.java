@@ -5,9 +5,6 @@ import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-/**
- * Created by Acha Bill on 7/17/2017.
- */
 public class Debtor {
     @Id
     private String id;
@@ -16,10 +13,10 @@ public class Debtor {
     private String lastName;
     @NotNull
     private int amount;
+    @NotNull
     private boolean isActive;
     @NotNull
     private List<Sale> sales;
-
     public Debtor() {
     }
 

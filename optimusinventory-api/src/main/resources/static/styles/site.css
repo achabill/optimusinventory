@@ -3,10 +3,7 @@
 }
 
 .login-background{
-    background: url("../images/bg-image.png") !important;
-}
-
-.fill-page{
+    background-color: #f9f9f9;
     bottom: 0;
     width:100%;
     height: 100%;
@@ -14,7 +11,30 @@
     left:0;
     right:0;
     position: absolute;
+
 }
 .login-color{
     color: #ffffff;
+}
+.login-div{
+    background-color: white;
+    width: 80%;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+    margin-left: 10%;
+    padding: 20px;
+    display: inline-block;
+}
+.main-div{
+    padding: 5px;
+    width: 30%;
+    margin-left: 35%;
+    padding-top: 10%;
+}
+.btn-block{
+    width: 100%;
+}
+.signin-label{
+    font-size: 22px;
+    font-weight: 100px;
 }
