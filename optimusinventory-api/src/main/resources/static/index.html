@@ -47,25 +47,29 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="/#/home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+                    <a href="/#sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a>
                 </li>
-                <li role="presentation">
-                    <a href="/#/sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a>
+                <li role="presentation" ng-class="getClass('#/debtors')">
+                    <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">Debtors</a>
                 </li>
-                <li role="presentation">
-                    <a href="/#/debtors" aria-controls="debtors" role="tab" data-toggle="tab">Debtors</a>
+                <li role="presentation" ng-class="getClass('#/inventory')">
+                    <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab">Manage Items</a>
                 </li>
-                <li role="presentation">
-                    <a href="/#/inventory" aria-controls="manage_items" role="tab" data-toggle="tab">Manage Items</a>
-                </li>
-                <li role="presentation">
-                    <a href="/#/admin" aria-controls="admin_panel" role="tab" data-toggle="tab">Admin Panel</a>
+                <li role="presentation" ng-class="getClass('#/admin')">
+                    <a href="/#admin" aria-controls="admin_panel" role="tab" data-toggle="tab">Admin Panel</a>
                 </li>
             </ul>
+
         </div>
     </div>
 
     <div ng-view=""></div>
+    <script>
+        function getClass(path) {
+            console.log("slkdjlksdj lskdjflkj!")
+            return window.location.hash === path ? "active" : "";
+        }
+    </script>
 
     <!-- libs -->
     <script src="scripts/libs/jquery.js"></script>

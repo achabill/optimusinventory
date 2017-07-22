@@ -96,7 +96,8 @@
                 <div style="position:relative;">
                     <a class="btn btn-primary" href="javascript:;">
                     Choose File...
-                    <input type="file" class="btn-file" name="file_source" size="40" file-model="myFile">
+                    <input type="file" class="btn-file" name="file_source" size="40" file-model="myFile"
+                    onchange="$('#upload-file-info').html($(this).val().replace('C:\\fakepath\\', ''));">
 		            </a> &nbsp;
                     <span class="label label-info" id="upload-file-info"></span>
                 </div>
