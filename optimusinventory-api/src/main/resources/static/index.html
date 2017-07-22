@@ -1,16 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OptimusInventory</title>
+
     <link rel="stylesheet" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" href="styles/site.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
+
 <body ng-app="OptimusInventoryApp">
-    <div class="container container-padding">
-        <div ng-view=""></div>
+
+    <nav class="navbar navbar-inverse" ng-if="location.path() !== '/'">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">OptimusInventory</a>
+            </div>
+            <form class="navbar-form navbar-left col-sm-6" style="z-index: 0;">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div role="tabpanel" class="tab-panel" ng-if="location.path() !== '/'">
+        <div class="container">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="/#/home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+                </li>
+                <li role="presentation">
+                    <a href="/#/sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a>
+                </li>
+                <li role="presentation">
+                    <a href="/#/debtors" aria-controls="debtors" role="tab" data-toggle="tab">Debtors</a>
+                </li>
+                <li role="presentation">
+                    <a href="/#/inventory" aria-controls="manage_items" role="tab" data-toggle="tab">Manage Items</a>
+                </li>
+                <li role="presentation">
+                    <a href="/#/admin" aria-controls="admin_panel" role="tab" data-toggle="tab">Admin Panel</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
+    <div ng-view=""></div>
 
     <!-- libs -->
     <script src="scripts/libs/jquery.js"></script>
@@ -24,10 +79,12 @@
     <!-- app -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/login-service.js"></script>
-
+    <script src="scripts/services/inventory-service.js"></script>
 
     <script src="scripts/controllers/login-controller.js"></script>
+    <script src="scripts/controllers/inventory-controller.js"></script>
 
-
+    <script src="scripts/directives/fileModel.js"></script>
 </body>
+
 </html>
