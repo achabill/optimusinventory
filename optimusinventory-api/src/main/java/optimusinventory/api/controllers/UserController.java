@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiOperation;
 import optimusinventory.api.auth.ITokenService;
 import optimusinventory.api.dao.IUsersDao;
 import optimusinventory.api.helpers.IHelpers;
-import optimusinventory.api.models.Privilege;
-import optimusinventory.api.models.User;
+import optimusinventory.api.log.IUserLogService;
+import optimusinventory.api.models.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,34 +14,46 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/accounts")
-@Api(value = "Account", description = "Account management")
+@RequestMapping(value = "/api/users")
+@Api(value = "Users", description = "User management")
 public class UserController {
 
     private IHelpers helpers;
     private ITokenService tokenService;
     private IUsersDao usersDao;
+    private IUserLogService userLogService;
 
-    public UserController(IHelpers helpers, ITokenService tokenService, IUsersDao usersDao) {
+    public UserController(IHelpers helpers, ITokenService tokenService, IUsersDao usersDao, IUserLogService userLogService) {
         this.helpers = helpers;
         this.tokenService = tokenService;
         this.usersDao = usersDao;
+        this.userLogService = userLogService;
     }
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "Login", notes = "Logs in a user and returns an access token.")
     public ResponseEntity<UserAccessToken> login(@Valid @RequestBody User user) throws Exception {
+
+
         User oldUser = usersDao.findByUsername(user.getUsername());
+        String token = tokenService.getToken(oldUser);
+        if(token != null){
+            throw new Exception("You are already logged in with token: " + token);
+        }
+
         if (oldUser == null)
             throw new Exception("Username not found");
         if (!oldUser.getPassword().equals(tokenService.digest(user.getPassword())))
             throw new Exception("Username or password incorrect");
 
         UserAccessToken userAccessToken = new UserAccessToken(oldUser, tokenService.setToken(oldUser));
+        UserLog userLog = new UserLog(oldUser, null, UserLogAction.LOGIN, new Date());
+        userLogService.log(userLog);
         return new ResponseEntity<>(userAccessToken, HttpStatus.CREATED);
     }
 
@@ -82,7 +94,8 @@ public class UserController {
             }});
         User newUser = usersDao.save(user);
         String _token = tokenService.setToken(newUser);
-
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, UserLogAction.ADD, new Date());
+        userLogService.log(userLog);
         return new ResponseEntity<>(new UserAccessToken(newUser, _token), HttpStatus.CREATED);
     }
 
@@ -121,6 +134,8 @@ public class UserController {
                                                  @RequestParam(value = "token") String token) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_ACCOUNTS);
         usersDao.delete(getUserById(id));
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), null, UserLogAction.DELETE, new Date());
+        userLogService.log(userLog);
         return new ResponseEntity<>("deleted", HttpStatus.ACCEPTED);
     }
 
@@ -140,6 +155,8 @@ public class UserController {
             user.setPassword(tokenService.digest(user.getPassword()));
         }
         User newUser = usersDao.save(user);
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, UserLogAction.UPDATE, new Date());
+        userLogService.log(userLog);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 

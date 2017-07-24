@@ -14,9 +14,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -25,6 +27,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.servlet.MultipartConfigElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +80,20 @@ public class Application {
                 User root = new User();
                 root.setUsername("admin");
                 root.setPassword(tokenService.digest("admin@123"));
-                root.setPrivileges(helpers.getAllPrivileges());
+                List<Privilege> privileges = helpers.getAllPrivileges();
+                System.out.println(privileges);
+                root.setPrivileges(privileges);
                 usersDao.save(root);
             }
         };
+    }
+
+
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize("5048MB");
+        factory.setMaxRequestSize("5048MB");
+        return factory.createMultipartConfig();
     }
 }

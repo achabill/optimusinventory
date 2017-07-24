@@ -20,5 +20,6 @@ public enum Privilege {
     CREATE_SUMMARY,
     READ_SUMMARY,
     UPDATE_SUMMARY,
-    DELETE_SUMMARY
+    DELETE_SUMMARY,
+    LOGS
 }

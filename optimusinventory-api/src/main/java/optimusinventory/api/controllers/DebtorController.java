@@ -2,28 +2,37 @@ package optimusinventory.api.controllers;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import optimusinventory.api.auth.ITokenService;
 import optimusinventory.api.dao.IDebtorsDao;
 import optimusinventory.api.helpers.IHelpers;
+import optimusinventory.api.log.IDebtorLogService;
 import optimusinventory.api.models.Debtor;
+import optimusinventory.api.models.DebtorLog;
+import optimusinventory.api.models.DebtorLogAction;
 import optimusinventory.api.models.Privilege;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @Api(value = "Manage debtors")
 @RequestMapping("/api/debtors")
-public class DebtorsController {
+public class DebtorController {
 
     private IDebtorsDao debtorsDao;
     private IHelpers helpers;
+    private ITokenService tokenService;
+    private IDebtorLogService debtorLogService;
 
-    public DebtorsController(IDebtorsDao debtorsDao, IHelpers helpers) {
+    public DebtorController(IDebtorsDao debtorsDao, IHelpers helpers, ITokenService tokenService, IDebtorLogService debtorLogService) {
         this.debtorsDao = debtorsDao;
         this.helpers = helpers;
+        this.tokenService = tokenService;
+        this.debtorLogService = debtorLogService;
     }
 
     @ApiOperation(value = "Get all debtors")
@@ -39,6 +48,8 @@ public class DebtorsController {
                                       @Valid @RequestBody Debtor debtor) throws Exception{
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_DEBTORS);
         Debtor newDebtor = debtorsDao.save(debtor);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),newDebtor, new Date(), DebtorLogAction.ADD);
+        debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
 
@@ -62,6 +73,8 @@ public class DebtorsController {
             throw new Exception("Debtor id does not match target id");
         }
         Debtor newDebtor = debtorsDao.save(debtor);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),newDebtor, new Date(), DebtorLogAction.UPDATE);
+        debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
 
@@ -72,6 +85,8 @@ public class DebtorsController {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_DEBTORS);
         Debtor debtor = getDebtorById(id);
         debtorsDao.delete(debtor);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),debtor, new Date(), DebtorLogAction.DELETE);
+        debtorLogService.log(debtorLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
 

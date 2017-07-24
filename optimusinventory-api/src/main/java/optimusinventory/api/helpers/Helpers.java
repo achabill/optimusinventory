@@ -64,6 +64,7 @@ public class Helpers implements IHelpers {
             add(Privilege.READ_SUMMARY);
             add(Privilege.UPDATE_SUMMARY);
             add(Privilege.DELETE_SUMMARY);
+            add(Privilege.LOGS);
         }};
         return privileges;
     }

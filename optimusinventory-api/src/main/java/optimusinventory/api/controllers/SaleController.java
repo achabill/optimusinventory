@@ -17,12 +17,12 @@ import java.util.List;
 @RestController
 @Api(value = "Sales", description = "Sales Management")
 @RequestMapping(value = "/api/sales")
-public class SalesController {
+public class SaleController {
 
     private ISalesDao salesDao;
     private IHelpers helpers;
 
-    public SalesController(ISalesDao salesDao, IHelpers helpers) {
+    public SaleController(ISalesDao salesDao, IHelpers helpers) {
         this.salesDao = salesDao;
         this.helpers = helpers;
     }

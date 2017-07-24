@@ -2,27 +2,38 @@ package optimusinventory.api.controllers;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import optimusinventory.api.auth.ITokenService;
 import optimusinventory.api.dao.IStockItemsDao;
 import optimusinventory.api.helpers.IHelpers;
-import optimusinventory.api.models.Privilege;
-import optimusinventory.api.models.StockItem;
+import optimusinventory.api.log.IStockItemLogService;
+import optimusinventory.api.models.*;
+import optimusinventory.api.parsers.IExcelFileService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @Api(value = "Stock items")
 @RequestMapping(value = "/api/items")
-public class StockItemsController {
+public class StockItemController {
     private IStockItemsDao stockItemsDao;
     private IHelpers helpers;
+    private IExcelFileService excelFileService;
+    private ITokenService tokenService;
+    private IStockItemLogService stockItemLogService;
 
-    public StockItemsController(IStockItemsDao stockItemsDao, IHelpers helpers) {
+    public StockItemController(IStockItemsDao stockItemsDao, IHelpers helpers, IExcelFileService excelFileService, ITokenService tokenService, IStockItemLogService stockItemLogService) {
         this.stockItemsDao = stockItemsDao;
         this.helpers = helpers;
+        this.excelFileService = excelFileService;
+        this.tokenService = tokenService;
+        this.stockItemLogService = stockItemLogService;
     }
 
     @ApiOperation(value = "Get all stock items")
@@ -37,8 +48,47 @@ public class StockItemsController {
     public ResponseEntity<StockItem> add(@RequestParam(value = "token") String token,
                                          @Valid @RequestBody StockItem stockItem) throws Exception{
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_ITEMS);
-        StockItem newStockItem = stockItemsDao.save(stockItem);
+        List<StockItem> allStockItems = stockItemsDao.findAll();
+        int i = allStockItems.indexOf(stockItem);
+        StockItem item = null;
+        if(i >= 0){
+            StockItem _item = allStockItems.get(i);
+            _item.setQuantity(_item.getQuantity() + stockItem.getQuantity());
+            item = _item;
+        }else{
+            item = stockItem;
+        }
+        StockItem newStockItem = stockItemsDao.save(item);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token),newStockItem, new Date(), StockItemLogAction.ADD);
+        stockItemLogService.log(stockItemLog);
+
         return new ResponseEntity<>(newStockItem, HttpStatus.CREATED);
+    }
+
+    @ApiOperation(value = "Add stock items from an excel file")
+    @RequestMapping(value = "/file", method = RequestMethod.POST)
+    public ResponseEntity<List<StockItem>> addFromExcelFile(@RequestParam(value = "token") String token,
+                                                            @RequestParam(value = "file") MultipartFile file) throws Exception{
+        helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_ITEMS);
+        List<StockItem> fileStockItems = excelFileService.parse(file);
+        List<StockItem> allStockItems = stockItemsDao.findAll();
+        List<StockItem> update = new ArrayList<>();
+        for(StockItem item : fileStockItems){
+            int i = allStockItems.indexOf(item);
+            if(i >= 0){
+                StockItem _item = allStockItems.get(i);
+                _item.setQuantity(item.getQuantity() + _item.getQuantity());
+                update.add(_item);
+            }else{
+                update.add(item);
+            }
+        }
+        List<StockItem> newStockItems = stockItemsDao.save(update);
+        newStockItems.forEach(item -> {
+            StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token),item, new Date(), StockItemLogAction.ADD);
+            stockItemLogService.log(stockItemLog);
+        });
+        return new ResponseEntity<>(newStockItems, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Get stock item by id")
@@ -61,6 +111,8 @@ public class StockItemsController {
             throw new Exception("StockItem id does not match target id");
         }
         StockItem newStockItem = stockItemsDao.save(stockItem);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token),newStockItem, new Date(), StockItemLogAction.UPDATE);
+        stockItemLogService.log(stockItemLog);
         return new ResponseEntity<>(newStockItem, HttpStatus.CREATED);
     }
 
@@ -71,6 +123,8 @@ public class StockItemsController {
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_ITEMS);
         StockItem stockItem = getStockItemById(id);
         stockItemsDao.delete(stockItem);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token),stockItem, new Date(), StockItemLogAction.DELETE);
+        stockItemLogService.log(stockItemLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
 
@@ -82,4 +136,5 @@ public class StockItemsController {
         }
         return stockitem;
     }
+
 }
