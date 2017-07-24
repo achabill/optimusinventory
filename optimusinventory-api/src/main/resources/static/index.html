@@ -49,13 +49,13 @@
                 <li role="presentation" class="active">
                     <a href="/#sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a>
                 </li>
-                <li role="presentation" ng-class="getClass('#/debtors')">
+                <li role="presentation">
                     <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">Debtors</a>
                 </li>
-                <li role="presentation" ng-class="getClass('#/inventory')">
+                <li role="presentation">
                     <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab">Manage Items</a>
                 </li>
-                <li role="presentation" ng-class="getClass('#/admin')">
+                <li role="presentation">
                     <a href="/#admin" aria-controls="admin_panel" role="tab" data-toggle="tab">Admin Panel</a>
                 </li>
             </ul>
@@ -64,12 +64,6 @@
     </div>
 
     <div ng-view=""></div>
-    <script>
-        function getClass(path) {
-            console.log("slkdjlksdj lskdjflkj!")
-            return window.location.hash === path ? "active" : "";
-        }
-    </script>
 
     <!-- libs -->
     <script src="scripts/libs/jquery.js"></script>
