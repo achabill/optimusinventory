@@ -1,114 +1,104 @@
 <div class="container">
-    <div>
-        <div class="panel-body">
-            <div class="container col-sm-4">
-                <form>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
+    <div class="panel-body row">
+        <div class="col-md-8">
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
-                        </div>
                     </div>
-                </form>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                  <span class="text-center btn btn-link btn-large" style="font-size: 20px; font-weight: bolder; margin-top: -8px;">TOTAL: 1450 CFA &nbsp;
+
+                    <button type="button" class="btn btn-large btn-primary">Borrow</button> &nbsp;
+                    <button type="button" class="btn btn-large btn-success">Checkout</button>
             </div>
-            <div class="container col-sm-4 col-sm-offset-4">
-                <div class="input-group">
-                    <div class="col-sm-4">
-                        <span class="btn btn-link btn-large" style="font-size: 24px; font-weight: bolder; margin-top: -8px;">1450</span>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-8">
+                    <div class="table-responsive bg-white card">
+                        <table class="table table-bordered table-striped projects table-condensed">
+                            <thead>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Red Pen</td>
+                                    <td>Stationery</td>
+                                    <td>1000</td>
+                                    <td>200</td>
+                                    <td>
+<a href="#" class="btn btn-info btn-xs"><i class="fa fa-shopping-cart"></i>&nbsp; Add to cart </a>                                    </td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Blue Pen</td>
+                                    <td>Stationery</td>
+                                    <td>1000</td>
+                                    <td>200</td>
+                                    <td>
+<a href="#" class="btn btn-info btn-xs"><i class="fa fa-shopping-cart"></i>&nbsp; Add to cart </a>                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>HB Pencil</td>
+                                    <td>Stationery</td>
+                                    <td>1000</td>
+                                    <td>200</td>
+                                    <td>
+<a href="#" class="btn btn-info btn-xs"><i class="fa fa-shopping-cart"></i>&nbsp; Add to cart </a>                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-large btn-primary">Borrow</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-large btn-success">Checkout</button>
+                </div>
+                <div class="col-md-4">
+                    <div class="table-responsive bg-white card">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <thead>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Red Pen</td>
+                                    <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"/></td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Red Pen</td>
+                                    <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"/></td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Red Pen</td>
+                                    <td><input type="number" class="form-control" value="1" min="1" style="width: 80px;"/></td>
+                                    <td>200</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="container">
-            <div class="col-md-8">
-                <div class="table-responsive bg-white card">
-                    <table class="table table-bordered table-striped table-condensed">
-                        <thead>
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Category</td>
-                            <td>Quantity</td>
-                            <td>Price</td>
-                            <td>Action</td>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Red Pen</td>
-                                <td>Stationery</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>
-                                    <label class="label label-success label-sm" style="height: 15px;">Add to Cart</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Blue Pen</td>
-                                <td>Stationery</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>
-                                    <label class="label label-success label-sm" style="height: 15px;">Add to Cart</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>HB Pencil</td>
-                                <td>Stationery</td>
-                                <td>1000</td>
-                                <td>200</td>
-                                <td>
-                                    <label class="label label-success label-sm" style="height: 15px;">Add to Cart</label>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="table-responsive bg-white card">
-                    <table class="table table-bordered table-striped table-condensed">
-                        <thead>
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Quantity</td>
-                            <td>Price</td>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Red Pen</td>
-                                <td>1000</td>
-                                <!--Change this to a number wheel-->
-                                <td>200</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Blue Pen</td>
-                                <td>1000</td>
-                                <td>200</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>HB Pencil</td>
-                                <td>1000</td>
-                                <td>200</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

@@ -7,8 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OptimusInventory</title>
 
-    <link rel="stylesheet" href="styles/libs/bootstrap.css">
-    <link rel="stylesheet" href="styles/site.css">
+        <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
+    <link href="css/site.css" rel="stylesheet">
+    <!-- Bootstrap -->
+<!-- Custom Theme Style -->
+<link href="css/custom.css" rel="stylesheet">
+
+    
+    <!-- Custom Theme Style -->
+    
+    
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,12 +37,13 @@
         <![endif]-->
 </head>
 
-<body ng-app="OptimusInventoryApp">
+<body ng-app="OptimusInventoryApp" class="main-body">
 
     <nav class="navbar navbar-inverse" ng-if="location.path() !== '/'">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">OptimusInventory</a>
+                
             </div>
             <form class="navbar-form navbar-left col-sm-6" style="z-index: 0;">
                 <div class="input-group">
@@ -36,27 +56,33 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
 
-    <div role="tabpanel" class="tab-panel" ng-if="location.path() !== '/'">
+    <div role="tabpanel" class="tab-panel" ng-if="location.path() !== '/'" style="padding-top: 10px;">
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="/#sales" aria-controls="sales" role="tab" data-toggle="tab">Sales</a>
+                    <a href="/#sales" aria-controls="sales" role="tab" data-toggle="tab">
+                        <i class="fa fa-shopping-cart"></i>&nbsp; Sales
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">Debtors</a>
+                    <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">
+                         <i class="fa fa-book"></i>&nbsp; Debtors
+                    </a>
+                        
                 </li>
                 <li role="presentation">
-                    <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab">Manage Items</a>
+                    <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab"> <i class="fa fa-cubes"></i>&nbsp; Inventory
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="/#admin" aria-controls="admin_panel" role="tab" data-toggle="tab">Admin Panel</a>
+                    <a href="/#admin" aria-controls="admin_panel" role="tab" data-toggle="tab"> <i class="fa fa-user"></i>&nbsp; Administration
+                    </a>
                 </li>
             </ul>
 
@@ -65,24 +91,69 @@
 
     <div ng-view=""></div>
 
-    <!-- libs -->
-    <script src="scripts/libs/jquery.js"></script>
-    <script src="scripts/libs/angular.js"></script>
-    <script src="scripts/libs/angular-route.js"></script>
-    <script src="scripts/libs/angular-loader.js"></script>
-    <script src="scripts/libs/angular-cookies.js"></script>
-    <script src="scripts/libs/validator.js"></script>
-    <script src="scripts/libs/bootstrap.js"></script>
+    <!--vendors -->
+            <!-- footer content -->
+            <hr/>
+        <footer>
+          <div class="container">
+              <div class="pull-left">
+            OptimusInventory - Acha Bill, Glenn Faison</a>
+          </div>
+          </div>
+        </footer>
+        <!-- /footer content -->
+
+      <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <!-- Chart.js -->
+    <script src="vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- morris.js -->
+    <script src="vendors/raphael/raphael.min.js"></script>
+    <script src="vendors/morris.js/morris.min.js"></script>
+    <!-- gauge.js -->
+    <script src="vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- Skycons -->
+    <script src="vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="vendors/Flot/jquery.flot.js"></script>
+    <script src="vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="vendors/Flot/jquery.flot.time.js"></script>
+    <script src="vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.min.js"></script>
+
+    <!-- angular -->
+    <script src="vendors/angularjs/angular.min.js"></script>
+    <script src="vendors/angularjs/angular-route.min.js"></script>
 
     <!-- app -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/services/login-service.js"></script>
-    <script src="scripts/services/inventory-service.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/services/login-service.js"></script>
+    <script src="app/services/inventory-service.js"></script>
 
-    <script src="scripts/controllers/login-controller.js"></script>
-    <script src="scripts/controllers/inventory-controller.js"></script>
-
-    <script src="scripts/directives/fileModel.js"></script>
+    <script src="app/controllers/login-controller.js"></script>
+    <script src="app/controllers/inventory-controller.js"></script>
+    <script src="app/directives/fileModel.js"></script>
 </body>
 
 </html>

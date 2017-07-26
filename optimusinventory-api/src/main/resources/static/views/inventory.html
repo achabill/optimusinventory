@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -20,12 +21,12 @@
             <div class="table-responsive bg-white card">
                 <table class="table table-striped table-condensed table-bordered">
                     <thead>
-                        <td>Id</td>
-                        <td>Name</td>
-                        <td>Category</td>
-                        <td>Quantity</td>
-                        <td>Price</td>
-                        <td>Action</td>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Price</td>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -35,7 +36,7 @@
                             <td>1000</td>
                             <td>200</td>
                             <td>
-                                <label class="label label-primary">Edit</label>
+                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
                             </td>
                         </tr>
                         <tr>
@@ -45,7 +46,7 @@
                             <td>1000</td>
                             <td>200</td>
                             <td>
-                                <label class="label label-primary">Edit</label>
+                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
                             </td>
                         </tr>
                         <tr>
@@ -55,7 +56,7 @@
                             <td>1000</td>
                             <td>200</td>
                             <td>
-                                <label class="label label-primary">Edit</label>
+                                <a href="#" class="btn btn-primary btn-xs"><h Edit </a>
                             </td>
                         </tr>
                     </tbody>
@@ -72,20 +73,20 @@
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="product_category" class="control-label">Category</label>
-                        <input type="text" id="product_category" class="form-control" placeholder="Category" required="true" data-error="Bro, you no get password?" />
+                        <input type="text" id="product_category" class="form-control" placeholder="Category" required="required" data-error="Bro, you no get password?" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="quantity" class="control-label">Quantity</label>
-                        <input type="number" id="quantity" class="form-control" placeholder="Quantity" required="true" data-error="Bro, you no get password?" />
+                        <input type="number" id="quantity" class="form-control" placeholder="Quantity" required="required" data-error="Bro, you no get password?" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cost_price" class="control-label">Cost Price</label>
-                    <input type="text" id="cost_price" class="form-control" placeholder="Cost Price" required="true" data-error="Bro, you no get password?" />
+                    <input type="text" id="cost_price" class="form-control" placeholder="Cost Price" required="required" data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group">
                     <label for="selling_price" class="control-label">Selling Price</label>
-                    <input type="text" id="selling_price" class="form-control" placeholder="Selling Price" required="true" data-error="Bro, you no get password?" />
+                    <input type="text" id="selling_price" class="form-control" placeholder="Selling Price" required="required" data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-block" ng-click="">Submit</button>
