@@ -39,57 +39,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
+            <tr ng-repeat="user in ctrl.users">
+              <td>$index(user)</td>
               <td>
-                <a>admin</a>
+                <a><span ng-bind="user.username"></span></a>
                 <br />
-                <small>Created 01.01.2015</small>
+                <small>Created <span ng-bind="user.createdOn"></small>
               </td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>679873401</td>
-              <td>CREATE_USER, READ_USER,UPDATE_USER, DELETE_USER, CREATE_SALES, READ_SALES, UPDATE_SALES, LOGS, CREATE_SUMMARY,
-                READ_SUMMARY, UPDATE_SUMMARY, DELETE_SUMMARY
+              <td><span ng-bind="user.firstName"></span></td>
+              <td><span ng-bind="user.lastName"></span></td>
+              <td><span ng-bind="user.phoneNumber"></span></td>
+              <td>
+                <a ng-repeat="privilege in user.privileges">
+                  <span ng-bind="privilege"></span>
+                </a>
               </td>
               <td>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-              </td>
-            </tr>
-              <tr>
-              <td>1</td>
-              <td>
-                <a>admin</a>
-                <br />
-                <small>Created 01.01.2015</small>
-              </td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>679873401</td>
-              <td>CREATE_USER, READ_USER,UPDATE_USER, DELETE_USER
-              </td>
-              <td>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-              </td>
-            </tr>
-              <tr>
-              <td>1</td>
-              <td>
-                <a>admin</a>
-                <br />
-                <small>Created 01.01.2015</small>
-              </td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>679873401</td>
-              <td>CREATE_USER, READ_USER,UPDATE_LOGS, CREATE_SUMMARY,
-                READ_SUMMARY, UPDATE_SUMMARY, DELETE_SUMMARY
-              </td>
-              <td>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                <a ng-if="user.username != 'admin'" href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                <a ng-if="user.username != 'admin'" href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
               </td>
             </tr>
           </tbody>

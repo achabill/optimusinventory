@@ -3,6 +3,7 @@ package optimusinventory.api.models;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -17,12 +18,12 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
+    private Date createdOn;
 
     public User() {
     }
 
-    public User(String id, String username, String password, List<Privilege> privileges, String phoneNumber, String email, String firstName, String lastName) {
-        this.id = id;
+    public User(String username, String password, List<Privilege> privileges, String phoneNumber, String email, String firstName, String lastName, Date createdOn) {
         this.username = username;
         this.password = password;
         this.privileges = privileges;
@@ -30,6 +31,7 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.createdOn = createdOn;
     }
 
     public String getId() {
@@ -94,5 +96,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 }

@@ -1,15 +1,18 @@
 'use strict';
 
 optimusInventoryApp
-    .controller('LoginController', ['LoginService', "$location", function(loginService, $location) {
+    .controller('LoginController', ['UserService', "$location", function (userService, $location) {
+        console.log("LoginController init");
+
+
         var self = this;
-        self.user = null;
-        self.login = function() {
-            loginService.login(self.user).then(function() {
-                    $location.path("/inventory");
-                },
-                function() {
-                    self.errorMessage = loginService.error;
-                });
+        self.isError = false;
+        self.login = function () {
+            userService.login(self.user).then(function () {
+                $location.path("/sales");
+            }, function () {
+                self.errorMessage = userService.error;
+                self.isError = true;
+            });
         }
     }]);

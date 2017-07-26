@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="OptimusInventoryApp">
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OptimusInventory</title>
 
-        <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -17,17 +17,17 @@
     <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
+
     <link href="css/site.css" rel="stylesheet">
     <!-- Bootstrap -->
-<!-- Custom Theme Style -->
-<link href="css/custom.css" rel="stylesheet">
-
-    
     <!-- Custom Theme Style -->
-    
-    
-    
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <!-- Custom Theme Style -->
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,31 +37,31 @@
         <![endif]-->
 </head>
 
-<body ng-app="OptimusInventoryApp" class="main-body">
-
-    <nav class="navbar navbar-inverse" ng-if="location.path() !== '/'">
+<body class="main-body">
+    <nav class="navbar navbar-inverse" ng-controller="NavbarController">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">OptimusInventory</a>
-                
+
             </div>
             <form class="navbar-form navbar-left col-sm-6" style="z-index: 0;">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" ng-model="searchString">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
+                        <button class="btn btn-default" ng-click="search()">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <div role="tabpanel" class="tab-panel" ng-if="location.path() !== '/'" style="padding-top: 10px;">
+
+    <div role="tabpanel" class="tab-panel" style="padding-top: 10px;">
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -74,7 +74,7 @@
                     <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">
                          <i class="fa fa-book"></i>&nbsp; Debtors
                     </a>
-                        
+
                 </li>
                 <li role="presentation">
                     <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab"> <i class="fa fa-cubes"></i>&nbsp; Inventory
@@ -92,18 +92,18 @@
     <div ng-view=""></div>
 
     <!--vendors -->
-            <!-- footer content -->
-            <hr/>
-        <footer>
-          <div class="container">
-              <div class="pull-left">
-            OptimusInventory - Acha Bill, Glenn Faison</a>
-          </div>
-          </div>
-        </footer>
-        <!-- /footer content -->
+    <!-- footer content -->
+    <hr/>
+    <footer>
+        <div class="container">
+            <div class="pull-left">
+                OptimusInventory - Acha Bill, Glenn Faison</a>
+            </div>
+        </div>
+    </footer>
+    <!-- /footer content -->
 
-      <!-- jQuery -->
+    <!-- jQuery -->
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -147,13 +147,21 @@
     <script src="vendors/angularjs/angular-route.min.js"></script>
 
     <!-- app -->
+
     <script src="app/app.js"></script>
-    <script src="app/services/login-service.js"></script>
+    <script src="app/services/user-service.js"></script>
     <script src="app/services/inventory-service.js"></script>
+    <script src="app/services/navbar-service.js"></script>
+
+    <script src="app/directives/fileModel.js"></script>
+
 
     <script src="app/controllers/login-controller.js"></script>
     <script src="app/controllers/inventory-controller.js"></script>
-    <script src="app/directives/fileModel.js"></script>
+    <script src="app/controllers/users-controller.js"></script>
+    <script src="app/controllers/sales-controller.js"></script>
+
+
 </body>
 
 </html>

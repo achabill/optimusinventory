@@ -29,6 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.MultipartConfigElement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -79,6 +80,11 @@ public class Application {
             if (userList == null || userList.size() == 0) {
                 User root = new User();
                 root.setUsername("admin");
+                root.setCreatedOn(new Date());
+                root.setEmail("admin@admin.com");
+                root.setFirstName("admin");
+                root.setLastName("admin");
+                root.setPhoneNumber("679873401");
                 root.setPassword(tokenService.digest("admin@123"));
                 List<Privilege> privileges = helpers.getAllPrivileges();
                 System.out.println(privileges);

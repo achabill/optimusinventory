@@ -4,10 +4,12 @@ var optimusInventoryApp = angular
     .module('OptimusInventoryApp', [
         'ngRoute'
     ])
-    .config(['$locationProvider', function($locationProvider) {
+    .config(['$locationProvider', function ($locationProvider) {
+
         $locationProvider.hashPrefix('');
     }])
-    .config(function($routeProvider) {
+    .config(function ($routeProvider) {
+
         $routeProvider
             .when('/', {
                 templateUrl: '/views/login.html',
@@ -29,17 +31,17 @@ var optimusInventoryApp = angular
                 controller: 'DebtorsController',
                 controllerAs: 'ctrl'
             })
-            .when('/admin',{
+            .when('/admin', {
                 templateUrl: '/views/admin.html',
                 controller: 'AdminController',
                 controllerAs: 'ctrl'
             })
-            .when('/users',{
+            .when('/users', {
                 templateUrl: '/views/users.html',
                 controller: 'UsersController',
                 controllerAs: 'ctrl'
             })
-            .when('/admin_inventory',{
+            .when('/admin_inventory', {
                 templateUrl: '/views/admin_inventory.html',
                 controller: 'AdminInventoryController',
                 controllerAs: 'ctrl'
@@ -48,3 +50,13 @@ var optimusInventoryApp = angular
                 redirectTo: '/'
             });
     });
+optimusInventoryApp
+    .controller('NavbarController', ['NavbarService', function (navbarService) {
+        console.log("NavBarController init");
+        var self = this;
+        self.user = navbarService.user;
+
+        self.search = function () {
+            console.log(self.searchString);
+        };
+    }]);
