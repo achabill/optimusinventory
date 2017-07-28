@@ -14,10 +14,15 @@ public class User {
     @NotNull
     private String password;
     private List<Privilege> privileges;
+    @NotNull
     private String phoneNumber;
     private String email;
+
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private Date createdOn;
 
     public User() {

@@ -1,13 +1,15 @@
 'use strict';
 
 optimusInventoryApp
-    .factory('InventoryService', ['$http', "UserService", function ($http, userService) {
-        var baseEndPoint = window.location.origin + "/api/items";
-        var token = userService.token;
-        console.log(userService.user);
+    .factory('InventoryService', ['$http', '$q', "UserService", function ($http, $q, userService) {
+        //var baseEndPoint = window.location.origin + "/api/users";
+        var baseEndPoint = "http://localhost:8080/api/items";
+
         var service = {
+            token: userService.token,
             getAllItems: function () {
-                return $http.get(baseEndPoint + '/?token=' + token).then(function (response) {
+                console.log('get all items');
+                return $http.get(baseEndPoint + '/?token=' + service.token).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);

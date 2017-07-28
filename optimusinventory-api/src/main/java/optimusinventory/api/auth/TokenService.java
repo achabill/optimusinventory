@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import static java.util.UUID.randomUUID;
@@ -25,15 +24,13 @@ class TokenService implements ITokenService {
     @Override
     public String setToken(User value) {
         String token = randomUUID().toString().replaceAll("-", "");
-        tokens.put(token, (User) value);
+        tokens.put(token, value);
         return token;
     }
 
     @Override
     public String getToken(User value) {
-        Iterator it = tokens.keySet().iterator();
-        while (it.hasNext()) {
-            String key = (String) it.next();
+        for (String key : tokens.keySet()) {
             if (tokens.get(key).equals(value))
                 return key;
         }

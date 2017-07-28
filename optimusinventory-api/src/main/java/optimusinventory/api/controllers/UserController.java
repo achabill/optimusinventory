@@ -37,7 +37,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "Login", notes = "Logs in a user and returns an access token.")
-    public ResponseEntity<UserAccessToken> login(@Valid @RequestBody User user) throws Exception {
+    public ResponseEntity<UserAccessToken> login(@Valid @RequestBody UserLogin user) throws Exception {
 
 
         User oldUser = usersDao.findByUsername(user.getUsername());
@@ -69,14 +69,14 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    @ApiOperation(value = "Signup", notes = "Signup a user with the required credentials")
-    public ResponseEntity<UserAccessToken> signup(@Valid @RequestBody User user,
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @ApiOperation(value = "Sign up", notes = "Sign up a user with the required credentials")
+    public ResponseEntity<UserAccessToken> addNewUser(@Valid @RequestBody User user,
                                                   @RequestParam(value = "token") String token) throws Exception {
 
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_ACCOUNTS);
         String username = user.getUsername();
-        if(!helpers.isUsernameAvailable(username)){
+        if(helpers.isUsernameAvailable(username)){
             throw new Exception("Username is not available");
         }
 
@@ -86,11 +86,12 @@ public class UserController {
             //default privilege is sales
             user.setPrivileges(new ArrayList<Privilege>() {{
                 add(Privilege.CREATE_SALES);
+                add(Privilege.UPDATE_SALES);
+                add(Privilege.UPDATE_ITEMS);
                 add(Privilege.READ_ITEMS);
                 add(Privilege.CREATE_DEBTORS);
                 add(Privilege.READ_DEBTORS);
                 add(Privilege.UPDATE_DEBTORS);
-                add(Privilege.DELETE_DEBTORS);
             }});
         User newUser = usersDao.save(user);
         String _token = tokenService.setToken(newUser);

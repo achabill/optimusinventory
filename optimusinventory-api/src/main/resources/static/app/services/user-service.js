@@ -1,9 +1,9 @@
 'use strict';
 
-optimusInventoryApp.factory('UserService', ['$http', '$q', function ($http, $q) {
-    console.log("user service");
+optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', function ($http, $q, $localStorage) {
     //var baseEndPoint = window.location.origin + "/api/users";
     var baseEndPoint = "http://localhost:8080/api/users";
+    console.log('user service');
     var service = {
 
         isLoggedin: false,
@@ -15,6 +15,12 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', function ($http, $q) 
                 service.isLoggedin = true;
                 service.token = response.data.token;
                 service.user = response.data.user;
+
+                $localStorage.$default({
+                    user: service.user,
+                    token: service.token
+                });
+
                 return $q.when(response);
 
             }, function (error) {
@@ -22,8 +28,8 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', function ($http, $q) 
                 return $q.reject(error);
             });
         },
-        signup: function (user) {
-            return $http.post(baseEndPoint + '/signup?token=' + service.token, user).then(function (response) {
+        addUser: function (user) {
+            return $http.post(baseEndPoint + '/?token=' + service.token, user).then(function (response) {
                 service.isLoggedin = true;
                 service.token = response.data.token;
                 service.user = response.data.user;
@@ -44,8 +50,17 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', function ($http, $q) 
                 });
         },
         getAllUsers: function () {
-            console.log("get all users");
             return $http.get(baseEndPoint + '/?token=' + service.token).then(function (response) {
+                return $q.when(response);
+            }, function (error) {
+                service.error = error.data.message;
+                console.log(error.data);
+                return $q.reject(error);
+            });
+        },
+
+        getAllPrivileges: function () {
+            return $http.get(baseEndPoint + '/privileges?token=' + service.token).then(function (response) {
                 return $q.when(response);
             }, function (error) {
                 service.error = error.data.message;
@@ -54,5 +69,8 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', function ($http, $q) 
             });
         }
     };
+
+    service.user = $localStorage.user;
+    service.token = $localStorage.token;
     return service;
 }]);

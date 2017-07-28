@@ -2,14 +2,14 @@
 
 var optimusInventoryApp = angular
     .module('OptimusInventoryApp', [
-        'ngRoute'
+        'ngRoute',
+        'ngStorage'
     ])
     .config(['$locationProvider', function ($locationProvider) {
 
         $locationProvider.hashPrefix('');
     }])
     .config(function ($routeProvider) {
-
         $routeProvider
             .when('/', {
                 templateUrl: '/views/login.html',
@@ -44,6 +44,11 @@ var optimusInventoryApp = angular
             .when('/admin_inventory', {
                 templateUrl: '/views/admin_inventory.html',
                 controller: 'AdminInventoryController',
+                controllerAs: 'ctrl'
+            })
+            .when('/logs', {
+                templateUrl: '/views/logs.html',
+                controller: 'LogsController',
                 controllerAs: 'ctrl'
             })
             .otherwise({

@@ -17,6 +17,7 @@
     <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <link href="css/site.css" rel="stylesheet">
     <!-- Bootstrap -->
@@ -44,7 +45,7 @@
                 <a class="navbar-brand" href="#">OptimusInventory</a>
 
             </div>
-            <form class="navbar-form navbar-left col-sm-6" style="z-index: 0;">
+            <!-- <form class="navbar-form navbar-left col-sm-6" style="z-index: 0;">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" ng-model="searchString">
                     <div class="input-group-btn">
@@ -54,8 +55,9 @@
                     </div>
                 </div>
             </form>
+            -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a class="btn">admin &nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -138,6 +140,9 @@
     <!-- bootstrap-daterangepicker -->
     <script src="vendors/moment/min/moment.min.js"></script>
     <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="vendors/validator/validator.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+
 
     <!-- Custom Theme Scripts -->
     <script src="js/custom.min.js"></script>
@@ -145,6 +150,7 @@
     <!-- angular -->
     <script src="vendors/angularjs/angular.min.js"></script>
     <script src="vendors/angularjs/angular-route.min.js"></script>
+    <script src="vendors/ng-storage/ng-storage.min.js"></script>
 
     <!-- app -->
 
@@ -160,6 +166,9 @@
     <script src="app/controllers/inventory-controller.js"></script>
     <script src="app/controllers/users-controller.js"></script>
     <script src="app/controllers/sales-controller.js"></script>
+    <script src="app/controllers/admin-controller.js"></script>
+    <script src="app/controllers/admin-inventory-controller.js"></script>
+    <script src="app/controllers/logs-controller.js"></script>
 
 
 </body>

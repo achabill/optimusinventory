@@ -17,6 +17,9 @@
     top: 0;
 }
 
+.error{
+    color: red;
+}
 .login-color {
     color: #ffffff;
 }

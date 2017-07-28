@@ -31,7 +31,7 @@ public class Helpers implements IHelpers {
     public User validateToken(String token) throws Exception {
         User u = tokenService.tokenValue(token);
         if (u == null)
-            throw new Exception("Token cannot be verified");
+            throw new Exception("Token cannot be verified. Please, login again");
         return u;
     }
 
