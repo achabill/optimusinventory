@@ -3,10 +3,11 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
     self.user = {}
     self.error = false;
     self.success = false;
+    self.allUsers = [];
 
     self.getAllUsers = function () {
         userService.getAllUsers().then(function (response) {
-            self.allUsers = [];
+
             for (var i = 0; i < response.data.length; i++) {
                 response.data[i].createdOn = new Date(response.data[i].createdOn).toLocaleDateString();
                 self.allUsers.push(response.data[i]);
@@ -59,6 +60,7 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
         userService.addUser(self.user).then(function (response) {
             self.success = true;
             self.allUsers.push(response.data);
+            self.successMessage = "User added successfully."
         }, function (error) {
             self.error = true;
             self.errorMessage = error.data.message;

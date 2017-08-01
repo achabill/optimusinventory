@@ -8,29 +8,49 @@ optimusInventoryApp
         var service = {
             token: userService.token,
             getAllItems: function () {
-                console.log('get all items');
                 return $http.get(baseEndPoint + '/?token=' + service.token).then(function (response) {
+                    console.log(response.data);
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
                 });
             },
             getItemById: function (id) {
-                return $http.get(baseEndPoint + '/' + id + '/?token=' + token).then(function (response) {
+                return $http.get(baseEndPoint + '/' + id + '/?token=' + service.token).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
                 });
             },
             postOneItem: function (item) {
-                return $http.post(baseEndPoint + '/' + id + '/?token=' + token, item).then(function (response) {
+                console.log("posting item..");
+                console.log(item);
+                return $http.post(baseEndPoint + '/?token=' + service.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
                 });
             },
             postFile: function (file) {
-                return $http.post(baseEndPoint + '/' + id + '/?token=' + token + "&file=" + file).then(function (response) {
+                var fd = new FormData();
+                fd.append('file', file);
+                fd.append('token', service.token);
+                console.log(fd);
+                return $http.post(baseEndPoint + "/file/", fd, {
+                    transformRequest: angular.identity,
+                    headers: {
+                        'Content-Type': undefined
+                    }
+                }).then(function (response) {
+                    return $q.when(response);
+                }, function (error) {
+                    return $q.reject(error);
+                });
+            },
+            updateItemById: function (item, id) {
+                console.log(item);
+                console.log(id);
+                return $http.put(baseEndPoint + '/' + id + '/?token=' + service.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);

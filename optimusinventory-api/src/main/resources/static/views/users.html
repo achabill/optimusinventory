@@ -24,12 +24,9 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <p class="text-muted font-13 m-b-30">
-          Users on OptimusInventory
-        </p>
         <div ng-if="ctrl.success" class="alert alert-success alert-dismissable">
           <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success!</strong>&nbsp; User added successfully.
+          <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
         </div>
         <div ng-if="ctrl.error" class="alert alert-error alert-dismissable">
           <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -166,7 +163,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <button id="send" type="button" class="btn btn-success" name="submit" ng-click="ctrl.addUser()">Submit</button>
+              <button id="send" type="button" class="btn btn-success" name="submit" data-dismiss="modal" ng-click="ctrl.addUser()">Add user</button>
             </div>
           </div>
         </form><br/>

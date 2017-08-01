@@ -9,7 +9,6 @@ optimusInventoryApp.directive('fileModel', ['$parse', function ($parse) {
                 scope.$apply(function () {
                     modelSetter(scope, element[0].files[0]);
                     $("#upload-file-info").html($(scope).val().replace("C:\\fakepath\\", ""));
-                    console.log(scope.value);
                 });
             });
         }

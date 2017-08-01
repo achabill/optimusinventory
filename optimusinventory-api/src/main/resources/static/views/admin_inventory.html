@@ -22,7 +22,7 @@
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="ctrl.searchString">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
@@ -59,7 +59,7 @@
 
 
                     <tbody>
-                        <tr ng-repeat="item in ctrl.allItems">
+                        <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
                             <td>{{$index + 1}}</td>
                             <td><span ng-bind="item.name"></span></td>
                             <td><span ng-bind="item.category"></span></td>

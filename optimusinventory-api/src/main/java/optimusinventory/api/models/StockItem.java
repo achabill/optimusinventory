@@ -86,6 +86,6 @@ public class StockItem {
     @Override
     public boolean equals(Object obj) {
         StockItem item = (StockItem)obj;
-        return item.getName() == this.getName() && item.getCategory() == this.getCategory();
+        return item.getName().equals(this.getName()) && item.getCategory().equals(this.getCategory());
     }
 }

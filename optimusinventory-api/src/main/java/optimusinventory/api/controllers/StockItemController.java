@@ -107,7 +107,7 @@ public class StockItemController {
                                                          @Valid @RequestBody StockItem stockItem) throws Exception{
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_ITEMS);
         getStockItemById(id);
-        if(stockItem.getId() != null || !stockItem.getId().equals(id)){
+        if(stockItem.getId() == null || !stockItem.getId().equals(id)){
             throw new Exception("StockItem id does not match target id");
         }
         StockItem newStockItem = stockItemsDao.save(stockItem);
