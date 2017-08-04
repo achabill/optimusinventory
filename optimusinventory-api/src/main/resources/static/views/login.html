@@ -20,9 +20,10 @@
             </form>
         </div>
         <br/><br/>
-        <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
-            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+        <div class="x_content">
+            <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+            </div>
         </div>
     </div>
-</div>

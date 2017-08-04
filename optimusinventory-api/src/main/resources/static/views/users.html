@@ -24,12 +24,12 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <div ng-if="ctrl.success" class="alert alert-success alert-dismissable">
-          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
+          <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
           <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
         </div>
-        <div ng-if="ctrl.error" class="alert alert-error alert-dismissable">
-          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+          <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
           <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
         </div>
         <table class="table table-striped projects table-bordered table-condensed">

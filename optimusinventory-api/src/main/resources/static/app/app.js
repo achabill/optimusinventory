@@ -55,13 +55,3 @@ var optimusInventoryApp = angular
                 redirectTo: '/'
             });
     });
-optimusInventoryApp
-    .controller('NavbarController', ['NavbarService', function (navbarService) {
-        console.log("NavBarController init");
-        var self = this;
-        self.user = navbarService.user;
-
-        self.search = function () {
-            console.log(self.searchString);
-        };
-    }]);

@@ -13,86 +13,91 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
-                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
-            </div>
-            <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
-                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
-            </div>
-            <div class="table-responsive bg-white card">
-                <table class="table table-striped table-condensed table-bordered">
-                    <thead>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
-                            <td>{{$index + 1}}</td>
-                            <td><span ng-bind="item.name"></span></td>
-                            <td><span ng-bind="item.category"></span></td>
-                            <td><span ng-bind="item.quantity"></span></td>
-                            <td><span ng-bind="item.sellingPrice"></span></td>
-                            <td>
-                                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="ctrl.setEditItem($index)"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="x_content">
+                <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
+                    <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
+                    <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+                </div>
+                <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                    <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                    <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+                </div>
+                <div class="table-responsive bg-white card">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
+                                <td>{{$index + 1}}</td>
+                                <td><span ng-bind="item.name"></span></td>
+                                <td><span ng-bind="item.category"></span></td>
+                                <td><span ng-bind="item.quantity"></span></td>
+                                <td><span ng-bind="item.sellingPrice"></span></td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="ctrl.setEditItem($index)"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4">
-            <form>
+        <div class="col-md-4 col-sm-4" style="padding-top: 20px;">
+            <form name="myForm">
                 <h3 class="text-center">Add New Item</h3>
                 <div class="form-group">
                     <label for="product_name" class="control-label">Product Name</label>
-                    <input type="text" ng-model="ctrl.item.name" id="product_name" class="form-control" placeholder="Product Name" required data-error="Username is required"
-                    />
+                    <input type="text" name="name" ng-model="ctrl.item.name" id="product_name" class="form-control" placeholder="Product Name"
+                        required data-error="Username is required" />
                 </div>
 
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="product_category" class="control-label">Category</label>
-                        <input type="text" ng-model="ctrl.item.category" id="product_category" class="form-control" placeholder="Category" required
-                            data-error="Bro, you no get password?" />
+                        <input type="text" name="category" ng-model="ctrl.item.category" id="product_category" class="form-control" placeholder="Category"
+                            required data-error="Bro, you no get password?" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="quantity" class="control-label">Quantity</label>
-                        <input type="number" id="quantity" ng-model="ctrl.item.quantity" class="form-control" placeholder="Quantity" required data-error="Bro, you no get password?"
-                        />
+                        <input type="number" min="1" name="quantity" id="quantity" ng-model="ctrl.item.quantity" class="form-control" placeholder="Quantity"
+                            required data-error="Bro, you no get password?" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cost_price" class="control-label">Cost Price</label>
-                    <input type="text" id="cost_price" ng-model="ctrl.item.costPrice" class="form-control" placeholder="Cost Price" required
-                        data-error="Bro, you no get password?" />
+                    <input type="text" name="costprice" id="cost_price" ng-model="ctrl.item.costPrice" class="form-control" placeholder="Cost Price"
+                        required data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group">
                     <label for="selling_price" class="control-label">Selling Price</label>
-                    <input type="text" id="selling_price" ng-model="ctrl.item.sellingPrice" class="form-control" placeholder="Selling Price"
+                    <input type="text" name="sellingprice" id="selling_price" ng-model="ctrl.item.sellingPrice" class="form-control" placeholder="Selling Price"
                         required data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-success btn-block" ng-click="ctrl.postOneItem()">Add</button>
+                    <button class="btn btn-success btn-block" ng-disabled="myForm.name.$invalid || myForm.category.$invalid || myForm.quantity.$invalid || myForm.costprice.$invalid || myForm.sellingprice.$invalid"
+                        ng-click="ctrl.postOneItem()">Add</button>
                 </div>
                 <div class="form-group text-center">Add from MicroSoft Excel file</div>
             </form>
             <div class="input-group">
                 <div style="position:relative;">
-                    <a class="btn btn-primary" href="javascript:;">
+                    <form name="fileForm">
+                        <a class="btn btn-primary" href="javascript:;">
                     Choose File...
-                    <input type="file" class="btn-file" name="file_source" size="40" file-model="ctrl.file"
+                    <input type="file" required name="file" class="btn-file" name="file_source" size="40" file-model="ctrl.file"
                     onchange="$('#upload-file-info').html($(this).val().replace('C:\\fakepath\\', ''));">
 		            </a> &nbsp;
-                    <span class="label label-info" id="upload-file-info"></span>
+                        <span class="label label-info" id="upload-file-info"></span>
+                    </form>
                 </div>
                 <div class="input-group-btn">
-                    <button class="btn btn-default" ng-click="ctrl.postFile()">Upload</button>
+                    <button class="btn btn-default" ng-disabled="ctrl.file === undefined" ng-click="ctrl.postFile()">Upload</button>
                 </div>
             </div>
         </div>
@@ -131,8 +136,8 @@
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="quantity" class="control-label">Quantity</label>
-                            <input type="number" id="quantity" ng-model="ctrl.editItem.quantity" class="form-control" placeholder="Quantity" required
-                                data-error="Bro, you no get password?" />
+                            <input type="number" min="1" id="quantity" ng-model="ctrl.editItem.quantity" class="form-control" placeholder="Quantity"
+                                required data-error="Bro, you no get password?" />
                         </div>
                     </div>
                     <div class="form-group">

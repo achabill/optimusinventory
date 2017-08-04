@@ -4,11 +4,16 @@ import java.util.List;
 
 public class Cart {
     List<CartItem> cartItems;
+    int total;
+
     public Cart() {
     }
-
     public Cart(List<CartItem> cartItems) {
         this.cartItems = cartItems;
+        this.total = 0;
+        for(int i = 0; i < cartItems.size(); i++){
+            this.total += cartItems.get(i).getTotal();
+        }
     }
 
     public List<CartItem> getCartItems() {
@@ -17,5 +22,10 @@ public class Cart {
 
     public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    public int getTotal(){return this.total;}
+    public void setTotal(int total){
+        this.total = total;
     }
 }

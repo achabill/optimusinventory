@@ -55,7 +55,7 @@ public class SaleController {
         return new ResponseEntity<>(newSale, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Delete user by id")
+    @ApiOperation(value = "Delete sale by id")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteUserById(@PathVariable("id") String id,
                                                  @RequestParam(value = "token") String token) throws Exception{

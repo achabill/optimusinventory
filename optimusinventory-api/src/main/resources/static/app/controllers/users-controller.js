@@ -1,8 +1,8 @@
 optimusInventoryApp.controller('UsersController', ['UserService', function (userService) {
     var self = this;
     self.user = {}
-    self.error = false;
-    self.success = false;
+    self.isError = false;
+    self.isSuccess = false;
     self.allUsers = [];
 
     self.getAllUsers = function () {
@@ -13,9 +13,16 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
                 self.allUsers.push(response.data[i]);
             }
         }, function (error) {
-            self.error = true;
+            self.isError = true;
             self.errorMessage = error.data.message;
         });
+    };
+
+    self.resetError = function () {
+        self.isError = false;
+    };
+    self.resetSuccess = function () {
+        self.isSuccess = false;
     };
 
     self.getAllPrivileges = function () {
@@ -29,7 +36,7 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
                 self.allPrivileges.push(privilege);
             }
         }, function (error) {
-            self.error = true;
+            self.isError = true;
             self.errorMessage = error.data.message;
         });
     };
@@ -58,11 +65,11 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
         }
         self.user.createdOn = new Date();
         userService.addUser(self.user).then(function (response) {
-            self.success = true;
+            self.isSuccess = true;
             self.allUsers.push(response.data);
             self.successMessage = "User added successfully."
         }, function (error) {
-            self.error = true;
+            self.isError = true;
             self.errorMessage = error.data.message;
         });
     }

@@ -3,7 +3,7 @@
 optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', function ($http, $q, $localStorage) {
     //var baseEndPoint = window.location.origin + "/api/users";
     var baseEndPoint = "http://localhost:8080/api/users";
-    console.log('user service');
+    //console.log('user service');
     var service = {
 
         isLoggedin: false,
@@ -45,7 +45,7 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
             },
                 function (error) {
                     service.error = error.data.message;
-                    console.log(error.data);
+                    //console.log(error.data);
                     return $q.reject(error);
                 });
         },
@@ -54,7 +54,7 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
                 return $q.when(response);
             }, function (error) {
                 service.error = error.data.message;
-                console.log(error.data);
+                //console.log(error.data);
                 return $q.reject(error);
             });
         },
@@ -64,7 +64,7 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
                 return $q.when(response);
             }, function (error) {
                 service.error = error.data.message;
-                console.log(error.data);
+                //console.log(error.data);
                 return $q.reject(error);
             });
         }

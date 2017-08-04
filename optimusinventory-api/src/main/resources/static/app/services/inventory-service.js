@@ -9,7 +9,7 @@ optimusInventoryApp
             token: userService.token,
             getAllItems: function () {
                 return $http.get(baseEndPoint + '/?token=' + service.token).then(function (response) {
-                    console.log(response.data);
+                    //console.log(response.data);
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
@@ -23,8 +23,8 @@ optimusInventoryApp
                 });
             },
             postOneItem: function (item) {
-                console.log("posting item..");
-                console.log(item);
+                //console.log("posting item..");
+                //console.log(item);
                 return $http.post(baseEndPoint + '/?token=' + service.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
@@ -35,7 +35,7 @@ optimusInventoryApp
                 var fd = new FormData();
                 fd.append('file', file);
                 fd.append('token', service.token);
-                console.log(fd);
+                //console.log(fd);
                 return $http.post(baseEndPoint + "/file/", fd, {
                     transformRequest: angular.identity,
                     headers: {
@@ -48,8 +48,6 @@ optimusInventoryApp
                 });
             },
             updateItemById: function (item, id) {
-                console.log(item);
-                console.log(id);
                 return $http.put(baseEndPoint + '/' + id + '/?token=' + service.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {

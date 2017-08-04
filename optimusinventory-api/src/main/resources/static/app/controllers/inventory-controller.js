@@ -1,12 +1,12 @@
 optimusInventoryApp.controller('InventoryController', ['InventoryService', function (inventoryService) {
     var self = this;
-    console.log("Inventory controller");
+    //console.log("Inventory controller");
     self.isSuccess = false;
     self.isError = false;
     self.allItems = [];
 
     self.getAllItems = function () {
-        console.log("get all items from contorller");
+        //console.log("get all items from contorller");
         inventoryService.getAllItems().then(function (response) {
             for (var i = 0; i < response.data.length; i++)
                 self.allItems.push(response.data[i]);
@@ -15,6 +15,14 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
             self.errorMessage = error.data.message;
         });
     };
+
+    self.resetError = function () {
+        self.isError = false;
+    };
+    self.resetSuccess = function () {
+        self.isSuccess = false;
+    };
+
     self.postOneItem = function () {
         inventoryService.postOneItem(self.item).then(
             function (response) {
@@ -64,7 +72,7 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
                 self.isSuccess = true;
             },
             function (error) {
-                console.log(error.data);
+                //console.log(error.data);
                 self.isError = true;
                 self.errorMessage = error.data.message;
             }
@@ -88,7 +96,7 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
                 self.allItems[i].costPrice = response.data.costPrice;
                 self.allItems[i].sellingPrice = response.data.sellingPrice;
 
-                console.log(response.data);
+                //console.log(response.data);
                 self.isSuccess = true;
                 self.successMessage = "Item updated successfully";
             }, function (error) {

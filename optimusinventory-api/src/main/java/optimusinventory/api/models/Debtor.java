@@ -17,6 +17,8 @@ public class Debtor {
     private boolean isActive;
     @NotNull
     private List<Sale> sales;
+    private String phoneNumber;
+
     public Debtor() {
     }
 
@@ -73,5 +75,13 @@ public class Debtor {
 
     public void setSales(List<Sale> sales) {
         this.sales = sales;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
