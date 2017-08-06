@@ -14,7 +14,8 @@
 # Maven
 log/
 target/
-!target/classes/vod/config/config.xml
+
+!optimusinventory-api/src/main/java/optimusinventory/api/log
 
 #upload
 upload-dir/
