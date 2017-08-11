@@ -2,19 +2,10 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
     var self = this;
     self.isSuccess = false;
     self.isError = false;
+    self.errorMessage;
+    self.successMessage;
     self.allDebtors = [];
 
-    self.getAllItems = function () {
-        inventoryService.getAllItems().then(function (response) {
-            for (var i = 0; i < response.data.length; i++)
-                if (response.data[i].quantity > 0) {
-                    self.allItems.push(response.data[i]);
-                }
-        }, function (error) {
-            self.isError = true;
-            self.errorMessage = error.data.message;
-        });
-    };
 
     self.resetError = function () {
         self.isError = false;
@@ -23,49 +14,44 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
         self.isSuccess = false;
     };
 
-    self.addToCart = function (item) {
-        var cartItem = {
-            "stockItem": item,
-            "quantity": 1,
-            "total": 0
-        };
-
-        for (var i = 0; i < self.allCartItems.length; i++) {
-            if (item.name == self.allCartItems[i].stockItem.name &&
-                item.category == self.allCartItems[i].stockItem.category) {
-                return;
+    self.getAllDebtors = function () {
+        debtorService.getAllDebtors().then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].amount > 0) {
+                    self.allDebtors.push(response.data[i]);
+                }
             }
-        }
-        self.allCartItems.push(cartItem);
-        self.setCartItemPrice(self.allCartItems.length - 1);
+        }, function (error) {
+            self.isError = true;
+            self.errorMessage = error.data.message;
+        });
     };
 
-    self.setCartItemPrice = function (i) {
-        console.log("cart item onchanged");
-        self.allCartItems[i].total = self.allCartItems[i].quantity * self.allCartItems[i].stockItem.sellingPrice;
-        console.log(self.allCartItems[i]);
-        self.totalCartSum = 0;
-        for (var i = 0; i < self.allCartItems.length; i++) {
-            self.totalCartSum += self.allCartItems[i].total;
-        }
-    };
+    self.viewTransactions = function (index) {
+        self.debtor = self.allDebtors[index];
+    }
 
-    self.checkoutCart = function () {
-        for (var i = 0; i < self.allCartItems.length; i++) {
-            if (isNaN(self.allCartItems[0].total)) {
-                self.isError = true;
-                self.errorMessage = "Not enough " + self.allCartItems[i].stockItem.name + " in stock.";
-                return;
+    self.setDebtor = function (index) {
+        self.debtor = self.allDebtors[index];
+    }
+    self.payAmount = function () {
+        var _debtor = self.debtor;
+        _debtor.amount -= self.amountToPay;
+        debtorService.updateDebtorById(_debtor, _debtor.id).then(function (response) {
+            for (var i = 0; i < self.allDebtors; i++) {
+                if (self.allDebtors[i].id == response.data.id) {
+                    self.allDebtors[i] = response.data.id;
+                }
             }
-        }
-        var sale = {
-            "date": new Date(),
-            "cart": {
-                "cartItems": self.allCartItems
-            }
-        };
-
-
-        self.getAllItems();
+            self.isSuccess = true;
+            self.successMessage = "Debtor updates successfully";
+        }, function (error) {
+            self.isError = true;
+            self.errorMessage = error.data.message;
+        });
     };
+    self.getSalesByDebtor = function (index) {
+        self.transactions = self.allDebtors[index].sales;
+    }
+    self.getAllDebtors();
 }]);

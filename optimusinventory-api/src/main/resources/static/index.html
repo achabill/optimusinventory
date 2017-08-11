@@ -39,14 +39,14 @@
 </head>
 
 <body class="main-body">
-    <nav class="navbar navbar-inverse" ng-controller="NavbarController">
+    <nav class="navbar navbar-inverse" ng-controller="NavController as ctrl">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">OptimusInventory</a>
-
+                <a class="navbar-brand" style="margin-bottom: 10px;">OptimusInventory</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="btn">admin &nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li style="color: white;"><button ng-click="ctrl.logout()" class="btn btn-xsm btn-primary" style="margin-top: 10px;">
+                    <span ng-bind="ctrl.user.username"></span>&nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
             </ul>
         </div>
     </nav>
@@ -160,6 +160,7 @@
     <script src="app/controllers/admin-inventory-controller.js"></script>
     <script src="app/controllers/logs-controller.js"></script>
     <script src="app/controllers/debtors-controller.js"></script>
+    <script src="app/controllers/nav-controller.js"></script>
 
 
 </body>

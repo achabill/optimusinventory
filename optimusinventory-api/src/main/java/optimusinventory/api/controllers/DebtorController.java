@@ -69,7 +69,7 @@ public class DebtorController {
                                                    @Valid @RequestBody Debtor debtor) throws Exception{
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_DEBTORS);
         getDebtorById(id);
-        if(debtor.getId() != null || !debtor.getId().equals(id)){
+        if(debtor.getId() == null || !debtor.getId().equals(id)){
             throw new Exception("Debtor id does not match target id");
         }
         Debtor newDebtor = debtorsDao.save(debtor);

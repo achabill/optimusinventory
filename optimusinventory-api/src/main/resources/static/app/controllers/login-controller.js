@@ -1,7 +1,7 @@
 'use strict';
 
 optimusInventoryApp
-    .controller('LoginController', ['UserService', "$location", function (userService, $location) {
+    .controller('LoginController', ['UserService', "$location", "$rootScope", function (userService, $location, $rootScope) {
         console.log("LoginController init");
 
 
@@ -11,6 +11,7 @@ optimusInventoryApp
 
         self.login = function () {
             userService.login(self.user).then(function () {
+                $rootScope.username = self.user.username;
                 $location.path("/sales");
             }, function () {
                 self.errorMessage = userService.error;

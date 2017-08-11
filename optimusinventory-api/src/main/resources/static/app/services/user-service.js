@@ -72,5 +72,13 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
 
     service.user = $localStorage.user;
     service.token = $localStorage.token;
+    if (service.user == undefined) {
+        service.user = {
+            "username": ""
+        };
+    }
+    if (service.token == undefined) {
+        service.token = "";
+    }
     return service;
 }]);

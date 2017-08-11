@@ -1,6 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="container">
+            <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
+                <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+            </div>
+            <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+            </div>
             <div class="row" style="padding: 20px;">
                 <div class="col-md-8">
                     <h4 class="text-center">Debtors on your inventory</h4>
@@ -15,28 +23,28 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John</td>
-                                    <td>Snow</td>
-                                    <td>678987451</td>
-                                    <td>400</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button>                                        &nbsp;
-                                        <button class="btn btn-success btn-xs"><i class="fa fa-eye"></i>&nbsp; Pay </button>
+                                <tr ng-repeat="debtor in ctrl.allDebtors">
+                                    <td>{{$index + 1}}</td>
+                                    <td><span ng-bind="debtor.firstName"></span></td>
+                                    <td><span ng-bind="debtor.lastName"></span></td>
+                                    <td><span ng-bind="debtor.phoneNumber"></span></td>
+                                    <td><span ng-bind="debtor.amount"></span></td>
+                                    <td><button ng-click="ctrl.viewTransactions($index)" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button>
+                                        <button data-toggle="modal" ng-click="ctrl.setDebtor($index)" data-target="#myModal" class="btn btn-success btn-xs"><i class="fa fa-eye"></i>&nbsp; Pay </button>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div ng-if="ctrl.debtor" class="col-md-4">
                     <div class="table-responsive bg-white card">
-                        <h4 class="text-center">Transaction History for John Doe</h4>
+                        <h4 class="text-center">Transaction History for {{ctrl.debtor.firstName}}&nbsp;{{ctrl.debtor.lastName}}</h4>
                         <table class="table table-condensed table-striped table-bordered">
                             <thead>
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Amount</th>
+                                <th>Type</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
@@ -44,9 +52,8 @@
                                     <td>1</td>
                                     <td>11/09/2001</td>
                                     <td>4500</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button>
-                                    </td>
+                                    <td>Payback</td>
+                                    <td><button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,5 +63,45 @@
 
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">{{ctrl.debtor.firstName}}&nbsp;{{ctrl.debtor.lastName}}</h3>
+                <small class="error">Fields with * are required</small>
+            </div>
+
+            <div class="modal-body">
+                <h4>Current debt: {{ctrl.debtor.amount}}</h4>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <form name="myForm">
+                            <div class="form-group">
+                                <label for="product_name" class="control-label">Amount to pay*</label>
+                                <input type="number" min="1" max="{{ctrl.debtor.amount}}" ng-model="ctrl.amountToPay" id="product_name" class="form-control"
+                                    placeholder="0.0" required name="amount" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button ng-disabled="myForm.amount.$invalid" ng-click="ctrl.payAmount()" class="btn btn-success btn-block" data-dismiss="modal">Pay</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>

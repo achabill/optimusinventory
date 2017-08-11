@@ -123,6 +123,7 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
                 debtorService.postDebtor(self.newDebtor).then(function (response) {
                     self.isSuccess = true;
                     self.successMessage = "Cart successfully borrowed out to Debtor, " + response.data.firstName;
+                    self.allDebtors.push(response.data);
                 }, function (error) {
                     self.isError = true;
                     self.errorMessage = error.data.message;

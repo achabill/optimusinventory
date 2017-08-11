@@ -88,13 +88,7 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
         inventoryService.updateItemById(self.editItem, self.editItem.id).then(
             function (response) {
                 var i = self.itemIndex;
-                self.allItems[i].id = response.data.id;
-                self.allItems[i].name = response.data.name;
-                self.allItems[i].category = response.data.category;
-                self.allItems[i].description = response.data.description;
-                self.allItems[i].quantity = response.data.quantity;
-                self.allItems[i].costPrice = response.data.costPrice;
-                self.allItems[i].sellingPrice = response.data.sellingPrice;
+                self.allItems[i] = response.data;
 
                 //console.log(response.data);
                 self.isSuccess = true;
