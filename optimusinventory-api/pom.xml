@@ -84,6 +84,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>optimusinventory.api.Application</start-class>
     </properties>
 
 

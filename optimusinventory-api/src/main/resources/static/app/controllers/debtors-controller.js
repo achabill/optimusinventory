@@ -5,6 +5,7 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
     self.errorMessage;
     self.successMessage;
     self.allDebtors = [];
+    self.allDebtorSales = [];
 
 
     self.resetError = function () {
@@ -15,9 +16,11 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
     };
 
     self.getAllDebtors = function () {
+        self.allDebtors = [];
         debtorService.getAllDebtors().then(function (response) {
             for (var i = 0; i < response.data.length; i++) {
                 if (response.data[i].amount > 0) {
+
                     self.allDebtors.push(response.data[i]);
                 }
             }
@@ -35,14 +38,16 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
         self.debtor = self.allDebtors[index];
     }
     self.payAmount = function () {
-        var _debtor = self.debtor;
-        _debtor.amount -= self.amountToPay;
-        debtorService.updateDebtorById(_debtor, _debtor.id).then(function (response) {
+        self.debtor.amount -= self.amountToPay;
+        debtorService.updateDebtorById(self.debtor, self.debtor.id).then(function (response) {
             for (var i = 0; i < self.allDebtors; i++) {
                 if (self.allDebtors[i].id == response.data.id) {
-                    self.allDebtors[i] = response.data.id;
+                    self.allDebtors[i] = response.data;
+                    self.debtor = null;
                 }
             }
+            self.getAllDebtors();
+
             self.isSuccess = true;
             self.successMessage = "Debtor updates successfully";
         }, function (error) {
@@ -50,6 +55,11 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
             self.errorMessage = error.data.message;
         });
     };
+
+    self.viewSale = function (i) {
+        self.sale = self.debtor.sales[i];
+        self.sale.date = new Date(self.sale.date).toLocaleDateString();
+    }
     self.getSalesByDebtor = function (index) {
         self.transactions = self.allDebtors[index].sales;
     }

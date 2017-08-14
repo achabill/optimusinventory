@@ -46,36 +46,42 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li style="color: white;"><button ng-click="ctrl.logout()" class="btn btn-xsm btn-primary" style="margin-top: 10px;">
-                    <span ng-bind="ctrl.user.username"></span>&nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+                    <span ng-bind="user.username"></span>&nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
             </ul>
         </div>
     </nav>
 
 
-    <div role="tabpanel" class="tab-panel" style="padding-top: 10px;">
+    <div role="tabpanel" class="tab-panel" ng-controller="TabsController as ctrl" style="padding-top: 10px;">
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="/#sales" aria-controls="sales" role="tab" data-toggle="tab">
-                        <i class="fa fa-shopping-cart"></i>&nbsp; Sales
+                    <a ng-click="ctrl.navigate('sales')" aria-controls="sales" role="tab" data-toggle="tab">
+                        <i class="fa fa-shopping-cart"></i>&nbsp; Sell
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="/#debtors" aria-controls="debtors" role="tab" data-toggle="tab">
+                    <a ng-click="ctrl.navigate('debtors')" aria-controls="debtors" role="tab" data-toggle="tab">
                          <i class="fa fa-book"></i>&nbsp; Debtors
                     </a>
 
                 </li>
                 <li role="presentation">
-                    <a href="/#inventory" aria-controls="manage_items" role="tab" data-toggle="tab"> <i class="fa fa-cubes"></i>&nbsp; Inventory
+                    <a ng-click="ctrl.navigate('inventory')" aria-controls="manage_items" role="tab" data-toggle="tab"> <i class="fa fa-cubes"></i>&nbsp; Inventory
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="/#admin" aria-controls="admin_panel" role="tab" data-toggle="tab"> <i class="fa fa-user"></i>&nbsp; Administration
+                    <a ng-click="ctrl.navigate('admin')" aria-controls="admin_panel" role="tab" data-toggle="tab"> <i class="fa fa-user"></i>&nbsp; Administration
                     </a>
                 </li>
             </ul>
+            <div>
+                <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                    <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                    <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -161,6 +167,7 @@
     <script src="app/controllers/logs-controller.js"></script>
     <script src="app/controllers/debtors-controller.js"></script>
     <script src="app/controllers/nav-controller.js"></script>
+    <script src="app/controllers/tabs-controller.js"></script>
 
 
 </body>

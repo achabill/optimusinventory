@@ -2,8 +2,8 @@
 
 optimusInventoryApp
     .factory('DebtorService', ['$http', '$q', "UserService", function ($http, $q, userService) {
-        //var baseEndPoint = window.location.origin + "/api/users";
-        var baseEndPoint = "http://localhost:8080/api/debtors";
+        var baseEndPoint = window.location.origin + "/api/debtors";
+        //var baseEndPoint = "http://localhost:8080/api/debtors";
 
         var service = {
             token: userService.token,

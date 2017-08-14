@@ -44,23 +44,19 @@
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Amount</th>
-                                <th>Type</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>11/09/2001</td>
-                                    <td>4500</td>
-                                    <td>Payback</td>
-                                    <td><button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button></td>
+                                <tr ng-repeat="sale in ctrl.debtor.sales">
+                                    <td>{{$index + 1}}</td>
+                                    <td><span ng-bind="sale.date"></span></td>
+                                    <td><span ng-bind="sale.cart.total"></span></td>
+                                    <td><button ng-click="ctrl.viewSale($index)" data-toggle="modal" data-target="#Modal" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i>&nbsp; View </button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -97,6 +93,46 @@
                         </form>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="Modal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Sale of the <span ng-bind="ctrl.sale.date"></span></h4>
+                <h5>Total: <span ng-bind="ctrl.sale.cart.total"></span></h5>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cartItem in ctrl.sale.cart.cartItems">
+                            <td>{{$index + 1}}</td>
+                            <td><span ng-bind="cartItem.stockItem.name"></span></td>
+                            <td><span ng-bind="cartItem.quantity"></span></td>
+                            <td><span ng-bind="cartItem.total"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

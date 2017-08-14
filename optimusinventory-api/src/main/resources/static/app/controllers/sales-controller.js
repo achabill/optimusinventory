@@ -173,6 +173,5 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
         };
 
         self.getAllItems();
-        console.log(self.allDebtors);
         self.getAllDebtors();
     }]);

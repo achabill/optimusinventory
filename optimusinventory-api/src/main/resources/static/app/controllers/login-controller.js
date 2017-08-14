@@ -8,10 +8,11 @@ optimusInventoryApp
         var self = this;
         self.isError = false;
         self.isSuccess = false;
+        self.errorMessage;
 
         self.login = function () {
             userService.login(self.user).then(function () {
-                $rootScope.username = self.user.username;
+                $rootScope.user = self.user;
                 $location.path("/sales");
             }, function () {
                 self.errorMessage = userService.error;

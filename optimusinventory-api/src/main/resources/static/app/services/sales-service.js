@@ -2,8 +2,8 @@
 
 optimusInventoryApp
     .factory('SalesService', ['$http', '$q', 'UserService', function ($http, $q, userService) {
-        //var baseEndPoint = window.location.origin + "/api/users";
-        var baseEndPoint = "http://localhost:8080/api/sales";
+        var baseEndPoint = window.location.origin + "/api/sales";
+        //var baseEndPoint = "http://localhost:8080/api/sales";
 
         var service = {
             token: userService.token,

@@ -14,7 +14,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +40,7 @@ import java.util.List;
 @Configuration
 @ComponentScan
 @EnableSwagger2
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
     private IUsersDao usersDao;
     private IHelpers helpers;
@@ -54,6 +56,10 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
+    }
     @Bean
     public Docket vodAPI() {
         return new Docket(DocumentationType.SWAGGER_2)
