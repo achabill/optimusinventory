@@ -12,6 +12,7 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
         var recentSale = {};
 
         self.getAllItems = function () {
+            self.allItems = [];
             inventoryService.getAllItems().then(function (response) {
                 for (var i = 0; i < response.data.length; i++)
                     if (response.data[i].quantity > 0) {
@@ -69,7 +70,7 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
                 }
             }
             var sale = {
-                "date": new Date(),
+                "date": new Date().toDateString(),
                 "cart": {
                     "cartItems": self.allCartItems,
                     "total": self.totalCartSum
@@ -87,7 +88,6 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
                     item.quantity = item.quantity - cartItem.quantity;
 
                     inventoryService.updateItemById(item, item.id).then(function (res) {
-                        console.log("update item");
                         for (var i = 0; i < self.allItems.length; i++) {
                             if (self.allItems[i].id == res.data.id) {
                                 self.allItems[i] = res.data;
@@ -99,6 +99,7 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
                     });
                 }
                 self.clearCart();
+                self.getAllItems();
             }, function (error) {
                 self.isError = true;
                 self.errorMessage = error.data.message;

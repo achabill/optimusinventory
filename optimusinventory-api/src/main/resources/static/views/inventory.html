@@ -5,8 +5,7 @@
                 <div class="container col-md-12 col-sm-12">
                     <div class="col-md-6 col-sm-5 col-xs-12 form-group pull-left top_search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for..."
-                                   ng-model="ctrl.searchString">
+                            <input type="text" class="form-control" placeholder="Search for..." ng-model="ctrl.searchString">
                             <span class="input-group-btn">
                       <button class="btn btn-info" style="color: white;" type="button"><i
                               class="glyphicon glyphicon-search"></i></button>
@@ -27,25 +26,24 @@
                 <div class="table-responsive bg-white card">
                     <table class="table table-striped table-condensed table-bordered">
                         <thead>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Action</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
-                            <td>{{$index + 1}}</td>
-                            <td><span ng-bind="item.name"></span></td>
-                            <td><span ng-bind="item.category"></span></td>
-                            <td><span ng-bind="item.quantity"></span></td>
-                            <td><span ng-bind="item.sellingPrice"></span></td>
-                            <td>
-                                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"
-                                   ng-click="ctrl.setEditItem($index)"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
-                            </td>
-                        </tr>
+                            <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
+                                <td>{{$index + 1}}</td>
+                                <td><span ng-bind="item.name"></span></td>
+                                <td><span ng-bind="item.category"></span></td>
+                                <td><span ng-bind="item.quantity"></span></td>
+                                <td><span ng-bind="item.sellingPrice"></span></td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="ctrl.setEditItem($index)"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -53,44 +51,38 @@
         </div>
         <div class="col-md-4 col-sm-4" style="padding-top: 20px;">
             <form name="myForm">
-                <h3 class="text-center">Add New Item</h3>
+                <h3 class="text-center">Edit Item</h3>
                 <div class="form-group">
                     <label for="product_name" class="control-label">Product Name</label>
-                    <input type="text" name="name" ng-model="ctrl.item.name" id="product_name" class="form-control"
-                           placeholder="Product Name"
-                           required data-error="Username is required"/>
+                    <input type="text" name="name" ng-model="ctrl.item.name" id="product_name" class="form-control" placeholder="Product Name"
+                        required data-error="Username is required" />
                 </div>
 
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="product_category" class="control-label">Category</label>
-                        <input type="text" name="category" ng-model="ctrl.item.category" id="product_category"
-                               class="form-control" placeholder="Category"
-                               required data-error="Bro, you no get password?"/>
+                        <input type="text" name="category" ng-model="ctrl.item.category" id="product_category" class="form-control" placeholder="Category"
+                            required data-error="Bro, you no get password?" />
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="quantity" class="control-label">Quantity</label>
-                        <input type="number" min="1" name="quantity" id="quantity" ng-model="ctrl.item.quantity"
-                               class="form-control" placeholder="Quantity"
-                               required data-error="Bro, you no get password?"/>
+                        <input type="number" min="1" name="quantity" id="quantity" ng-model="ctrl.item.quantity" class="form-control" placeholder="Quantity"
+                            required data-error="Bro, you no get password?" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cost_price" class="control-label">Cost Price</label>
-                    <input type="text" name="costprice" id="cost_price" ng-model="ctrl.item.costPrice"
-                           class="form-control" placeholder="Cost Price"
-                           required data-error="Bro, you no get password?"/>
+                    <input type="text" name="costprice" id="cost_price" ng-model="ctrl.item.costPrice" class="form-control" placeholder="Cost Price"
+                        required data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group">
                     <label for="selling_price" class="control-label">Selling Price</label>
-                    <input type="text" name="sellingprice" id="selling_price" ng-model="ctrl.item.sellingPrice"
-                           class="form-control" placeholder="Selling Price"
-                           required data-error="Bro, you no get password?"/>
+                    <input type="text" name="sellingprice" id="selling_price" ng-model="ctrl.item.sellingPrice" class="form-control" placeholder="Selling Price"
+                        required data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-success btn-block"
-                            ng-disabled="myForm.name.$invalid || myForm.category.$invalid || myForm.quantity.$invalid || myForm.costprice.$invalid || myForm.sellingprice.$invalid"
-                            ng-click="ctrl.postOneItem()">Add
+                    <button class="btn btn-success btn-block" ng-disabled="myForm.name.$invalid || myForm.category.$invalid || myForm.quantity.$invalid || myForm.costprice.$invalid || myForm.sellingprice.$invalid"
+                        ng-click="ctrl.postOneItem()">Add
                     </button>
                 </div>
                 <div class="form-group text-center">Add from MicroSoft Excel file</div>
@@ -138,35 +130,30 @@
                     <h3 class="text-center">Add New Item</h3>
                     <div class="form-group">
                         <label for="product_name" class="control-label">Product Name</label>
-                        <input type="text" ng-model="ctrl.editItem.name" id="product_name" class="form-control"
-                               placeholder="Product Name" required
-                               data-error="Username is required"/>
+                        <input type="text" ng-model="ctrl.editItem.name" id="product_name" class="form-control" placeholder="Product Name" required
+                            data-error="Username is required" />
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label for="product_category" class="control-label">Category</label>
-                            <input type="text" ng-model="ctrl.editItem.category" id="product_category"
-                                   class="form-control" placeholder="Category" required
-                                   data-error="Bro, you no get password?"/>
+                            <input type="text" ng-model="ctrl.editItem.category" id="product_category" class="form-control" placeholder="Category" required
+                                data-error="Bro, you no get password?" />
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="quantity" class="control-label">Quantity</label>
-                            <input type="number" min="1" id="quantity" ng-model="ctrl.editItem.quantity"
-                                   class="form-control" placeholder="Quantity"
-                                   required data-error="Bro, you no get password?"/>
+                            <input type="number" min="1" id="quantity" ng-model="ctrl.editItem.quantity" class="form-control" placeholder="Quantity"
+                                required data-error="Bro, you no get password?" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cost_price" class="control-label">Cost Price</label>
-                        <input type="text" id="cost_price" ng-model="ctrl.editItem.costPrice" class="form-control"
-                               placeholder="Cost Price" required
-                               data-error="Bro, you no get password?"/>
+                        <input type="text" id="cost_price" ng-model="ctrl.editItem.costPrice" class="form-control" placeholder="Cost Price" required
+                            data-error="Bro, you no get password?" />
                     </div>
                     <div class="form-group">
                         <label for="selling_price" class="control-label">Selling Price</label>
-                        <input type="text" id="selling_price" ng-model="ctrl.editItem.sellingPrice" class="form-control"
-                               placeholder="Selling Price"
-                               required data-error="Bro, you no get password?"/>
+                        <input type="text" id="selling_price" ng-model="ctrl.editItem.sellingPrice" class="form-control" placeholder="Selling Price"
+                            required data-error="Bro, you no get password?" />
                     </div>
                     <div class="form-group text-center">
                         <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.editItemById()">
@@ -179,7 +166,6 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                     
             </div>
         </div>
 

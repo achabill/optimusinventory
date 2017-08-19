@@ -11,7 +11,7 @@ public class Sale {
     @NotNull
     private Cart cart;
     @NotNull
-    private Date date;
+    private String date; //use date as string for now.
 
     public Sale() {
     }
@@ -36,11 +36,11 @@ public class Sale {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

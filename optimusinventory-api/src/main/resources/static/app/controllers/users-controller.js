@@ -9,7 +9,7 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
         userService.getAllUsers().then(function (response) {
 
             for (var i = 0; i < response.data.length; i++) {
-                response.data[i].createdOn = new Date(response.data[i].createdOn).toLocaleDateString();
+
                 self.allUsers.push(response.data[i]);
             }
         }, function (error) {
@@ -63,7 +63,7 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
                 self.user.privileges.push(self.allPrivileges[i].value);
             }
         }
-        self.user.createdOn = new Date();
+        self.user.createdOn = new Date().toDateString();
         userService.addUser(self.user).then(function (response) {
             self.isSuccess = true;
             self.allUsers.push(response.data);

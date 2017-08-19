@@ -42,7 +42,7 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
 
                 self.item = {};
                 self.isSuccess = true;
-                self.successMessage = "Item added/updated successfully";
+                self.successMessage = "Item added successfully";
             },
             function (error) {
                 self.isError = true;

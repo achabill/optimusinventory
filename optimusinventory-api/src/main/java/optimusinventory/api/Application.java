@@ -85,7 +85,7 @@ public class Application extends SpringBootServletInitializer {
             if (userList == null || userList.size() == 0) {
                 User root = new User();
                 root.setUsername("admin");
-                root.setCreatedOn(new Date());
+                root.setCreatedOn(new Date().toString());
                 root.setEmail("admin@admin.com");
                 root.setFirstName("admin");
                 root.setLastName("admin");

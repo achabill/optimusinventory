@@ -23,12 +23,12 @@ public class User {
     @NotNull
     private String lastName;
     @NotNull
-    private Date createdOn;
+    private String createdOn;
 
     public User() {
     }
 
-    public User(String username, String password, List<Privilege> privileges, String phoneNumber, String email, String firstName, String lastName, Date createdOn) {
+    public User(String username, String password, List<Privilege> privileges, String phoneNumber, String email, String firstName, String lastName, String createdOn) {
         this.username = username;
         this.password = password;
         this.privileges = privileges;
@@ -103,11 +103,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getCreatedOn() {
+    public String getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(String createdOn) {
         this.createdOn = createdOn;
     }
 }
