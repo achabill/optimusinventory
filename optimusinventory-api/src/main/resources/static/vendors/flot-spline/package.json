@@ -8,6 +8,6 @@
     "url": "https://github.com/johnpozy/flot-spline/issues"
   },
   "main": "js/jquery.flot.spline.js",
-  "license" : "SEE LICENSE IN LICENSE",
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {}
 }

@@ -41,8 +41,8 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
         },
         logout: function () {
             return $http.get(baseEndPoint + '/logout?token=' + service.token).then(function (response) {
-                return $q.when(response);
-            },
+                    return $q.when(response);
+                },
                 function (error) {
                     service.error = error.data.message;
                     //console.log(error.data);

@@ -10,13 +10,13 @@ public class DebtorLog {
     private User user;
     private Debtor Debtor;
     private Date date;
-    private DebtorLogAction debtorLogAction;
+    private LogAction logAction;
 
-    public DebtorLog(User user, Debtor debtor, Date date, DebtorLogAction debtorLogAction) {
+    public DebtorLog(User user, Debtor debtor, Date date, LogAction logAction) {
         this.user = user;
         Debtor = debtor;
         this.date = date;
-        this.debtorLogAction = debtorLogAction;
+        this.logAction = logAction;
     }
 
     public String getId() {
@@ -47,15 +47,16 @@ public class DebtorLog {
         return date;
     }
 
+
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public DebtorLogAction getDebtorLogAction() {
-        return debtorLogAction;
+    public LogAction getDebtorLogAction() {
+        return logAction;
     }
 
-    public void setDebtorLogAction(DebtorLogAction debtorLogAction) {
-        this.debtorLogAction = debtorLogAction;
+    public void setDebtorLogAction(LogAction logAction) {
+        this.logAction = logAction;
     }
 }

@@ -10,13 +10,13 @@ public class StockItemLog {
     private User user;
     private StockItem stockItem;
     private Date date;
-    private StockItemLogAction stockItemLogAction;
+    private LogAction logAction;
 
-    public StockItemLog(User user, StockItem stockItem, Date date, StockItemLogAction stockItemLogAction) {
+    public StockItemLog(User user, StockItem stockItem, Date date, LogAction logAction) {
         this.user = user;
         this.stockItem = stockItem;
         this.date = date;
-        this.stockItemLogAction = stockItemLogAction;
+        this.logAction = logAction;
     }
 
     public User getUser() {
@@ -51,11 +51,11 @@ public class StockItemLog {
         this.id = id;
     }
 
-    public StockItemLogAction getStockItemLogAction() {
-        return stockItemLogAction;
+    public LogAction getStockItemLogAction() {
+        return logAction;
     }
 
-    public void setStockItemLogAction(StockItemLogAction stockItemLogAction) {
-        this.stockItemLogAction = stockItemLogAction;
+    public void setStockItemLogAction(LogAction logAction) {
+        this.logAction = logAction;
     }
 }

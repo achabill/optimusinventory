@@ -3,13 +3,13 @@
 module.exports = (config) ->
   config.set
 
-    # base path, that will be used to resolve files and exclude
+# base path, that will be used to resolve files and exclude
     basePath: ''
 
-    # testing framework to use (jasmine/mocha/qunit/...)
+# testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine']
 
-    # list of files / patterns to load in the browser
+# list of files / patterns to load in the browser
     files: [
       'test/polyfills/bind.js'
       'bower_components/jquery/dist/jquery.js'
@@ -22,32 +22,32 @@ module.exports = (config) ->
       'test/**/*.js'
     ]
 
-    # list of files / patterns to exclude
+# list of files / patterns to exclude
     exclude: []
 
-    # web server port
+# web server port
     port: 8080
 
-    # level of logging
-    # possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+# level of logging
+# possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
     logLevel: config.LOG_INFO
 
-    # enable / disable watching file and executing tests whenever any file changes
+# enable / disable watching file and executing tests whenever any file changes
     autoWatch: true
 
-    # reporters
+# reporters
     reporters: ['progress', 'dots']
 
-    # Start these browsers, currently available:
-    # - Chrome
-    # - ChromeCanary
-    # - Firefox
-    # - Opera
-    # - Safari (only Mac)
-    # - PhantomJS
-    # - IE (only Windows)
+# Start these browsers, currently available:
+# - Chrome
+# - ChromeCanary
+# - Firefox
+# - Opera
+# - Safari (only Mac)
+# - PhantomJS
+# - IE (only Windows)
     browsers: ['Chrome']
 
-    # Continuous Integration mode
-    # if true, it capture browsers, run tests and exit
+# Continuous Integration mode
+# if true, it capture browsers, run tests and exit
     singleRun: false

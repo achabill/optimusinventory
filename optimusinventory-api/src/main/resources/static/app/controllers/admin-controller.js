@@ -1,15 +1,14 @@
 'use strict';
 
 optimusInventoryApp
-    .controller('AdminController', ['UserService', "$location", function (userService, $location) {
-
-
+    .controller('AdminController', ['UserService', "$location", function (userService) {
         var self = this;
         self.isError = false;
         self.isSuccess = false;
 
         self.verifyAdmin = function () {
-            userService.getAllUsers().then(function () { }, function (error) {
+            userService.getAllUsers().then(function () {
+            }, function (error) {
             });
         };
 

@@ -28,14 +28,12 @@
     <!-- Custom Theme Style -->
 
 
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="main-body">
@@ -45,8 +43,11 @@
                 <a class="navbar-brand" style="margin-bottom: 10px;">OptimusInventory</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li style="color: white;"><button ng-click="ctrl.logout()" class="btn btn-xsm btn-primary" style="margin-top: 10px;">
-                    <span ng-bind="user.username"></span>&nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout</button></li>
+                <li style="color: white;">
+                    <button ng-click="ctrl.logout()" class="btn btn-xsm btn-primary" style="margin-top: 10px;">
+                    <span ng-bind="user.username"></span>&nbsp;<span class="glyphicon glyphicon-log-out"></span> Logout
+                </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -58,22 +59,28 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a ng-click="ctrl.navigate('sales')" aria-controls="sales" role="tab" data-toggle="tab">
-                        <i class="fa fa-shopping-cart"></i>&nbsp; Sell
-                    </a>
+                    <i class="fa fa-shopping-cart"></i>&nbsp; Sell
+                </a>
                 </li>
                 <li role="presentation">
                     <a ng-click="ctrl.navigate('debtors')" aria-controls="debtors" role="tab" data-toggle="tab">
-                         <i class="fa fa-book"></i>&nbsp; Debtors
-                    </a>
-
+                    <i class="fa fa-book"></i>&nbsp; Debtors
+                </a>
                 </li>
                 <li role="presentation">
-                    <a ng-click="ctrl.navigate('inventory')" aria-controls="manage_items" role="tab" data-toggle="tab"> <i class="fa fa-cubes"></i>&nbsp; Inventory
-                    </a>
+                    <a ng-click="ctrl.navigate('machineitems')" aria-controls="machineitems" role="tab" data-toggle="tab">
+                    <i class="fa fa-book"></i>&nbsp; Machines
+                </a>
                 </li>
                 <li role="presentation">
-                    <a ng-click="ctrl.navigate('admin')" aria-controls="admin_panel" role="tab" data-toggle="tab"> <i class="fa fa-user"></i>&nbsp; Administration
-                    </a>
+                    <a ng-click="ctrl.navigate('inventory')" aria-controls="manage_items" role="tab" data-toggle="tab"> <i
+                        class="fa fa-cubes"></i>&nbsp; Inventory
+                </a>
+                </li>
+                <li role="presentation">
+                    <a ng-click="ctrl.navigate('admin')" aria-controls="admin_panel" role="tab" data-toggle="tab"> <i
+                        class="fa fa-user"></i>&nbsp; Administration
+                </a>
                 </li>
             </ul>
             <div>
@@ -154,6 +161,8 @@
     <script src="app/services/navbar-service.js"></script>
     <script src="app/services/sales-service.js"></script>
     <script src="app/services/debtors-service.js"></script>
+    <script src="app/services/machineitems-service.js"></script>
+    <script src="app/services/machine-service.js"></script>
 
     <script src="app/directives/fileModel.js"></script>
 
@@ -168,6 +177,8 @@
     <script src="app/controllers/debtors-controller.js"></script>
     <script src="app/controllers/nav-controller.js"></script>
     <script src="app/controllers/tabs-controller.js"></script>
+    <script src="app/controllers/machineitems-controller.js"></script>
+    <script src="app/controllers/machine-controller.js"></script>
 
 
 </body>

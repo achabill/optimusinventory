@@ -17,8 +17,8 @@ else {
     var buffer = new ArrayBuffer(0);
     try {
         exports.blob = new Blob([buffer], {
-            type: "application/zip"
-        }).size === 0;
+                type: "application/zip"
+            }).size === 0;
     }
     catch (e) {
         try {

@@ -1,180 +1,197 @@
 <div class="container body">
-  <div class="main_container">
-    <div class="col-md-3 left_col">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
 
-      <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
-    </div>
-  </div>
-
-  <ul class="nav nav-tabs" style="padding-top: 10px">
-    <li role="presentation"><a href="#/admin"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a></li>
-    <li role="presentation" class="active"><a href="#/users"><i class="fa fa-group"></i>&nbsp;Manage Users</a></li>
-    <li role="presentation"><a href="#/admin_inventory"><i class="fa fa-cubes"></i>&nbsp;View Stock</a></li>
-    <li role="presentation"><a href="#/logs"><i class="fa fa-cubes"></i>&nbsp;Logs</a></li>
-  </ul>
-  <!-- top navigation --
-        <!-- /top navigation -->
-
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2><small>Users</small></h2>
-        <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal">New User</button>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
-          <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
-          <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
         </div>
-        <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
-          <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
-          <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
-        </div>
-        <table class="table table-striped projects table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th style="width: 1%">#</th>
-              <th style="width: 20%">Username</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Phone Number</th>
-              <th>Privileges</th>
-              <th style="width: 20%">Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="user in ctrl.allUsers">
-              <td>{{$index + 1}}</td>
-              <td>
-                <a><span ng-bind="user.username"></span></a>
-                <br />
-                <small>Created <span ng-bind="user.createdOn"></small>
-              </td>
-              <td><span ng-bind="user.firstName"></span></td>
-              <td><span ng-bind="user.lastName"></span></td>
-              <td><span ng-bind="user.phoneNumber"></span></td>
-              <td>
-                <a ng-repeat="privilege in user.privileges">
-                  <span ng-bind="privilege"></span>
-                </a>
-              </td>
-              <td>
-                <a ng-if="user.username != 'admin'" href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                <a ng-if="user.username != 'admin'" href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </div>
+
+    <ul class="nav nav-tabs" style="padding-top: 10px">
+        <li role="presentation"><a href="#/admin"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a></li>
+        <li role="presentation" class="active"><a href="#/users"><i class="fa fa-group"></i>&nbsp;Manage Users</a></li>
+        <li role="presentation"><a href="#/machines"><i class="fa fa-group"></i>&nbsp;Manage Machines</a></li>
+        <li role="presentation"><a href="#/admin_inventory"><i class="fa fa-cubes"></i>&nbsp;View Stock</a></li>
+        <li role="presentation"><a href="#/logs"><i class="fa fa-cubes"></i>&nbsp;Logs</a></li>
+    </ul>
+    <!-- top navigation --
+          <!-- /top navigation -->
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    <small>Users</small>
+                </h2>
+                <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal">New
+                    User
+                </button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
+                    <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
+                    <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+                </div>
+                <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                    <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                    <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+                </div>
+                <table class="table table-striped projects table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 20%">Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone Number</th>
+                            <th>Privileges</th>
+                            <th style="width: 20%">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in ctrl.allUsers">
+                            <td>{{$index + 1}}</td>
+                            <td>
+                                <a><span ng-bind="user.username"></span></a>
+                                <br/>
+                                <small>Created <span ng-bind="user.createdOn"></small>
+                            </td>
+                            <td><span ng-bind="user.firstName"></span></td>
+                            <td><span ng-bind="user.lastName"></span></td>
+                            <td><span ng-bind="user.phoneNumber"></span></td>
+                            <td>
+                                <a ng-repeat="privilege in user.privileges">
+                                <span ng-bind="privilege"></span>
+                            </a>
+                            </td>
+                            <td>
+                                <a ng-if="user.username != 'admin'" href="#" class="btn btn-info btn-xs"><i
+                                    class="fa fa-pencil"></i> Edit </a>
+                                <a ng-if="user.username != 'admin'" href="#" class="btn btn-danger btn-xs"><i
+                                    class="fa fa-trash-o"></i> Delete </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
 
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
 
-    <!-- Modal content-->
+        <!-- Modal content-->
 
-    <div class="modal-content">
+        <div class="modal-content">
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title">New user</h3>
-        <small class="error">Fields with * are required</small>
-      </div>
-
-      <div class="modal-body">
-
-        <form class="form-horizontal form-label-left" novalidate>
-
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Username <span class="required">*</span></label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input ng-model="ctrl.user.username" id="username" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="username"
-                placeholder="Username" required="required" type="text">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">New user</h3>
+                <small class="error">Fields with * are required</small>
             </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span></label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="firstname" ng-model="ctrl.user.firstName" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="firstname"
-                placeholder="Firstname" required="required" type="text">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lastname <span class="required">*</span></label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="lastname" ng-model="ctrl.user.lastName" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="lastname"
-                placeholder="LastName" required="required" type="text">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
+
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" novalidate>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Username <span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="ctrl.user.username" id="username" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="username"
+                                placeholder="Username" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="firstname" ng-model="ctrl.user.firstName" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="firstname"
+                                placeholder="Firstname" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lastname <span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="lastname" ng-model="ctrl.user.lastName" class="form-control col-md-7 col-xs-12" data-validate-words="1" name="lastname"
+                                placeholder="LastName" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
                         </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="email" ng-model="ctrl.user.email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label for="password1" class="control-label col-md-3">Password<span class="required">*</span></label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="password1" type="password" ng-model="ctrl.password1" name="password1" data-validate-length="6,8" class="form-control col-md-7 col-xs-12"
-                required="required">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password<span class="required">*</span></label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="password2" ng-model="ctrl.password2" type="password" name="password2" data-validate-linked="password1" class="form-control col-md-7 col-xs-12"
-                required="required">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Phone Number<span class="required">*</span>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" ng-model="ctrl.user.email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="password1" class="control-label col-md-3">Password<span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="password1" type="password" ng-model="ctrl.password1" name="password1" data-validate-length="6,8" class="form-control col-md-7 col-xs-12"
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password<span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="password2" ng-model="ctrl.password2" type="password" name="password2" data-validate-linked="password1" class="form-control col-md-7 col-xs-12"
+                                required="required">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Phone Number<span
+                                class="required">*</span>
                         </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="tel" ng-model="ctrl.user.phoneNumber" id="telephone" name="phone" required="required" data-validate-length-range="8,20"
-                class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Privileges (check all that apply) <span class="required">*</span>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="tel" ng-model="ctrl.user.phoneNumber" id="telephone" name="phone" required="required" data-validate-length-range="8,20"
+                                class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Privileges (check all
+                            that apply) <span class="required">*</span>
                         </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <table class="table table-striped table-condensed">
-                <thead>
-                  <th>Check</th>
-                  <th>Privilege</th>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="privilege in ctrl.allPrivileges">
-                    <td><input type="checkbox" ng-model="privilege.isChecked"></td>
-                    <td><span ng-bind="privilege.value"></span></td>
-                  </tr>
-                </tbody>
-              </table>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <table class="table table-striped table-condensed">
+                                <thead>
+                                    <th>Check</th>
+                                    <th>Privilege</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="privilege in ctrl.allPrivileges">
+                                        <td><input type="checkbox" ng-model="privilege.isChecked"></td>
+                                        <td><span ng-bind="privilege.value"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="send" type="button" class="btn btn-success" name="submit" data-dismiss="modal" ng-click="ctrl.addUser()">Add user
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <br/>
+                <div ng-if="ctrl.user.addUserError != 'undefined'">
+                    <span class="error" ng-bind="ctrl.addUserError"></span>
+                </div>
             </div>
-          </div>
-          <div class="ln_solid"></div>
-          <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
-              <button id="send" type="button" class="btn btn-success" name="submit" data-dismiss="modal" ng-click="ctrl.addUser()">Add user</button>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-          </div>
-        </form><br/>
-        <div ng-if="ctrl.user.addUserError != 'undefined'">
-          <span class="error" ng-bind="ctrl.addUserError"></span>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>       </div>
     </div>
-
-  </div>
 </div>

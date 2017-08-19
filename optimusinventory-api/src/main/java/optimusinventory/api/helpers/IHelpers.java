@@ -1,5 +1,6 @@
 package optimusinventory.api.helpers;
 
+import optimusinventory.api.models.MachineType;
 import optimusinventory.api.models.Privilege;
 import optimusinventory.api.models.User;
 
@@ -11,5 +12,7 @@ public interface IHelpers {
     User validateToken(String token) throws Exception;
 
     void validateRole(User user, Privilege privilege) throws Exception;
+
     List<Privilege> getAllPrivileges();
+    List<MachineType> getAllMachineTypes();
 }

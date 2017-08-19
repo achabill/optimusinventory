@@ -12,24 +12,33 @@
             <div class="col-md-8">
                 <div class="col-md-6 col-sm-5 col-xs-12 form-group pull-left top_search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for..." ng-model="ctrl.searchString">
+                        <input type="text" class="form-control" placeholder="Search for..."
+                               ng-model="ctrl.searchString">
                         <span class="input-group-btn">
-                      <button class="btn btn-info" style="color: white;"  type="button"><i class="glyphicon glyphicon-search"></i></button>
+                      <button class="btn btn-info" style="color: white;" type="button"><i
+                              class="glyphicon glyphicon-search"></i></button>
                     </span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="text-center">
-                    <span class="btn btn-link btn-large" style="font-size: 20px; font-weight: bolder; margin-top: -8px;">
+                    <span class="btn btn-link btn-large"
+                          style="font-size: 20px; font-weight: bolder; margin-top: -8px;">
                     TOTAL: <span ng-bind="ctrl.totalCartSum"></span>
                     </span>
                 </div>
                 <div class="input-group container" style="margin-left: 20%">
 
-                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Borrow</button>                    &nbsp;
-                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-success" ng-click="ctrl.checkoutCart()">Checkout</button>&nbsp;
-                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-danger" ng-click="ctrl.clearCart()">Clear All</button>
+                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-primary"
+                            data-toggle="modal" data-target="#myModal">Borrow
+                    </button> &nbsp;
+                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-success"
+                            ng-click="ctrl.checkoutCart()">Checkout
+                    </button>&nbsp;
+                    <button ng-disabled="ctrl.allCartItems.length == 0" class="btn btn-sm btn-danger"
+                            ng-click="ctrl.clearCart()">Clear All
+                    </button>
 
                 </div>
             </div>
@@ -39,22 +48,26 @@
                         <div class="table-responsive bg-white card">
                             <table class="table table-striped table-condensed table-bordered">
                                 <thead>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
-                                        <td>{{$index + 1}}</td>
-                                        <td><span ng-bind="item.name"></span></td>
-                                        <td><span ng-bind="item.category"></span></td>
-                                        <td><span ng-bind="item.quantity"></span></td>
-                                        <td><span ng-bind="item.sellingPrice"></span></td>
-                                        <td><button class="btn btn-primary btn-xs" ng-click="ctrl.addToCart(item)"><i class="fa fa-shopping-cart"></i>&nbsp; Add to cart</button></td>
-                                    </tr>
+                                <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
+                                    <td>{{$index + 1}}</td>
+                                    <td><span ng-bind="item.name"></span></td>
+                                    <td><span ng-bind="item.category"></span></td>
+                                    <td><span ng-bind="item.quantity"></span></td>
+                                    <td><span ng-bind="item.sellingPrice"></span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-xs" ng-click="ctrl.addToCart(item)"><i
+                                                class="fa fa-shopping-cart"></i>&nbsp; Add to cart
+                                        </button>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -63,25 +76,28 @@
                         <div class="table-responsive bg-white card">
                             <table class="table table-bordered table-striped table-condensed">
                                 <thead>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Remove</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Remove</th>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="cartItem in ctrl.allCartItems">
-                                        <td><span ng-bind="($index + 1)"></span></td>
-                                        <td><span ng-bind="cartItem.stockItem.name"></span></td>
-                                        <td><input type="number" ng-model="cartItem.quantity" ng-change="ctrl.setCartItemPrice($index)"
-                                                class="form-control" value="1" min="1" max="{{cartItem.stockItem.quantity}}"
-                                                style="width: 80px;" /></td>
-                                        <td><span ng-bind="cartItem.total"></span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-xs" ng-click="ctrl.removeCartItem($index)"><i class="fa fa-trash-o"></i>&nbsp;Remove </a>
-                                        </td>
-                                    </tr>
+                                <tr ng-repeat="cartItem in ctrl.allCartItems">
+                                    <td><span ng-bind="($index + 1)"></span></td>
+                                    <td><span ng-bind="cartItem.stockItem.name"></span></td>
+                                    <td><input type="number" ng-model="cartItem.quantity"
+                                               ng-change="ctrl.setCartItemPrice($index)"
+                                               class="form-control" value="1" min="1"
+                                               max="{{cartItem.stockItem.quantity}}"
+                                               style="width: 80px;"/></td>
+                                    <td><span ng-bind="cartItem.total"></span>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger btn-xs" ng-click="ctrl.removeCartItem($index)"><i
+                                                class="fa fa-trash-o"></i>&nbsp;Remove </a>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -114,10 +130,14 @@
                             <form name="selectForm">
                                 <div class="form-group">
                                     <label>Select old debtor</label>
-                                    <select class="form-control" required name="select" ng-model="ctrl.oldDebtor" ng-options="x.firstName + ' ' + x.lastName for x in ctrl.allDebtors"></select>
+                                    <select class="form-control" required name="select" ng-model="ctrl.oldDebtor"
+                                            ng-options="x.firstName + ' ' + x.lastName for x in ctrl.allDebtors"></select>
                                 </div>
                                 <div class="form-group text-center">
-                                    <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.borrowOutOldDebtor()" ng-disabled="!ctrl.oldDebtor.firstName">Checkout</button>
+                                    <button class="btn btn-success btn-block" data-dismiss="modal"
+                                            ng-click="ctrl.borrowOutOldDebtor()"
+                                            ng-disabled="!ctrl.oldDebtor.firstName">Checkout
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -126,23 +146,29 @@
                         <form name="myForm">
                             <div class="form-group">
                                 <label for="product_name" class="control-label">First Name *</label>
-                                <input type="text" ng-model="ctrl.newDebtor.firstName" id="product_name" class="form-control" placeholder="First Name" required
-                                    name="firstname" data-error="firstname is required" />
+                                <input type="text" ng-model="ctrl.newDebtor.firstName" id="product_name"
+                                       class="form-control" placeholder="First Name" required
+                                       name="firstname" data-error="firstname is required"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="cost_price" class="control-label">Last Name *</label>
-                                <input type="text" name="lastname" id="cost_price" ng-model="ctrl.newDebtor.lastName" class="form-control" placeholder="Last Name"
-                                    required data-error="Bro, you no get password?" />
+                                <input type="text" name="lastname" id="cost_price" ng-model="ctrl.newDebtor.lastName"
+                                       class="form-control" placeholder="Last Name"
+                                       required data-error="Bro, you no get password?"/>
                             </div>
                             <div class="form-group">
                                 <label for="selling_price" class="control-label">Phone Number *</label>
-                                <input type="text" name="phonenumber" ng-minlength="6" id="selling_price" ng-model="ctrl.newDebtor.phoneNumber" class="form-control"
-                                    placeholder="679873401" required data-error="Bro, you no get password?" />
+                                <input type="text" name="phonenumber" ng-minlength="6" id="selling_price"
+                                       ng-model="ctrl.newDebtor.phoneNumber" class="form-control"
+                                       placeholder="679873401" required data-error="Bro, you no get password?"/>
                             </div>
                             <div class="form-group text-center">
-                                <button ng-disabled="myForm.firstname.$invalid || myForm.lastname.$invalid || myForm.phonenumber.$invalid" ng-click="ctrl.borrowOutNewDebtor()"
-                                    class="btn btn-success btn-block" data-dismiss="modal">Add new debtor and checkout</button>
+                                <button ng-disabled="myForm.firstname.$invalid || myForm.lastname.$invalid || myForm.phonenumber.$invalid"
+                                        ng-click="ctrl.borrowOutNewDebtor()"
+                                        class="btn btn-success btn-block" data-dismiss="modal">Add new debtor and
+                                    checkout
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -152,7 +178,8 @@
                         <span class="error" ng-bind="ctrl.addUserError"></span>
                     </div>
                     <div ng-if="ctrl.isModalError" class="alert alert-error alert-dismissable">
-                        <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                        <a class="close" data-dismiss="alert" aria-label="close"
+                           ng-click="ctrl.resetError()">&times;</a>
                         <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.modalErrorMessage"></span>
                     </div>
                 </div>

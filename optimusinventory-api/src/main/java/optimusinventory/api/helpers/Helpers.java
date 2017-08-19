@@ -2,9 +2,9 @@ package optimusinventory.api.helpers;
 
 import optimusinventory.api.auth.ITokenService;
 import optimusinventory.api.dao.IUsersDao;
+import optimusinventory.api.models.MachineType;
 import optimusinventory.api.models.Privilege;
 import optimusinventory.api.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class Helpers implements IHelpers {
     IUsersDao usersDao;
     ITokenService tokenService;
 
-    public Helpers(IUsersDao usersDao, ITokenService tokenService){
+    public Helpers(IUsersDao usersDao, ITokenService tokenService) {
         this.usersDao = usersDao;
         this.tokenService = tokenService;
     }
@@ -64,8 +64,25 @@ public class Helpers implements IHelpers {
             add(Privilege.READ_SUMMARY);
             add(Privilege.UPDATE_SUMMARY);
             add(Privilege.DELETE_SUMMARY);
+            add(Privilege.CREATE_MACHINE_ITEMS);
+            add(Privilege.READ_MACHINE_ITEMS);
+            add(Privilege.UPDATE_MACHINE_ITEMS);
+            add(Privilege.DELETE_MACHINE_ITEMS);
+            add(Privilege.CREATE_MACHINE);
+            add(Privilege.READ_MACHINE);
+            add(Privilege.UPDATE_MACHINE);
+            add(Privilege.DELETE_MACHINE);
             add(Privilege.LOGS);
         }};
         return privileges;
+    }
+
+    @Override
+    public List<MachineType> getAllMachineTypes() {
+        return new ArrayList<MachineType>(){{
+            add(MachineType.PHOTOCOPIER);
+            add(MachineType.PRINTER);
+            add(MachineType.SCANNER);
+        }};
     }
 }

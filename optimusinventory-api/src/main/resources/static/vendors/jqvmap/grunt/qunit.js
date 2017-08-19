@@ -1,3 +1,3 @@
 module.exports = {
-  dist: ['tests/*.html']
+    dist: ['tests/*.html']
 };

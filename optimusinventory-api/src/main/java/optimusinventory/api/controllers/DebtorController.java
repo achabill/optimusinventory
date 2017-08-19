@@ -8,7 +8,7 @@ import optimusinventory.api.helpers.IHelpers;
 import optimusinventory.api.log.IDebtorLogService;
 import optimusinventory.api.models.Debtor;
 import optimusinventory.api.models.DebtorLog;
-import optimusinventory.api.models.DebtorLogAction;
+import optimusinventory.api.models.LogAction;
 import optimusinventory.api.models.Privilege;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,18 +45,18 @@ public class DebtorController {
     @ApiOperation(value = "Add a new debtor")
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<Debtor> add(@RequestParam(value = "token") String token,
-                                      @Valid @RequestBody Debtor debtor) throws Exception{
+                                      @Valid @RequestBody Debtor debtor) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_DEBTORS);
         Debtor newDebtor = debtorsDao.save(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),newDebtor, new Date(), DebtorLogAction.ADD);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date(), LogAction.CREATE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Get debtor by id")
-    @RequestMapping(value  = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Debtor> getDebtorById(@RequestParam(value = "token") String token,
-                                                @PathVariable("id") String id) throws Exception{
+                                                @PathVariable("id") String id) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.READ_DEBTORS);
         Debtor debtor = getDebtorById(id);
         return new ResponseEntity<>(debtor, HttpStatus.OK);
@@ -66,14 +66,14 @@ public class DebtorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Debtor> updateDebtorById(@RequestParam(value = "token") String token,
                                                    @PathVariable("id") String id,
-                                                   @Valid @RequestBody Debtor debtor) throws Exception{
+                                                   @Valid @RequestBody Debtor debtor) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_DEBTORS);
         getDebtorById(id);
-        if(debtor.getId() == null || !debtor.getId().equals(id)){
+        if (debtor.getId() == null || !debtor.getId().equals(id)) {
             throw new Exception("Debtor id does not match target id");
         }
         Debtor newDebtor = debtorsDao.save(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),newDebtor, new Date(), DebtorLogAction.UPDATE);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date(), LogAction.UPDATE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
@@ -81,11 +81,11 @@ public class DebtorController {
     @ApiOperation(value = "Delete debtor by id")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteDebtorById(@RequestParam(value = "token") String token,
-                                                   @PathVariable("id") String id) throws Exception{
+                                                   @PathVariable("id") String id) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_DEBTORS);
         Debtor debtor = getDebtorById(id);
         debtorsDao.delete(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token),debtor, new Date(), DebtorLogAction.DELETE);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), debtor, new Date(), LogAction.DELETE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
@@ -93,7 +93,7 @@ public class DebtorController {
     //internal helpers
     private Debtor getDebtorById(String id) throws Exception {
         Debtor debtor = debtorsDao.findById(id);
-        if(debtor == null){
+        if (debtor == null) {
             throw new Exception("Debtor with id does not exist");
         }
         return debtor;

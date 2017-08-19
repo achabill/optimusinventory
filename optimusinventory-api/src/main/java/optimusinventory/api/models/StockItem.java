@@ -85,7 +85,7 @@ public class StockItem {
 
     @Override
     public boolean equals(Object obj) {
-        StockItem item = (StockItem)obj;
+        StockItem item = (StockItem) obj;
         return item.getName().equals(this.getName()) && item.getCategory().equals(this.getCategory());
     }
 }

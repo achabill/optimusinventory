@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="panel-body row">
+        <div class="x_content">
+            <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
+                <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+            </div>
+            <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <h1>Machine items</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Debtor</h3>
+                <small class="error">Fields with * are required</small>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <form name="selectForm">
+                                <div class="form-group">
+                                    <label>Select old debtor</label>
+                                    <select class="form-control" required name="select" ng-model="ctrl.oldDebtor" ng-options="x.firstName + ' ' + x.lastName for x in ctrl.allDebtors"></select>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.borrowOutOldDebtor()" ng-disabled="!ctrl.oldDebtor.firstName">Checkout
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <form name="myForm">
+                            <div class="form-group">
+                                <label for="product_name" class="control-label">First Name *</label>
+                                <input type="text" ng-model="ctrl.newDebtor.firstName" id="product_name" class="form-control" placeholder="First Name" required
+                                    name="firstname" data-error="firstname is required" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cost_price" class="control-label">Last Name *</label>
+                                <input type="text" name="lastname" id="cost_price" ng-model="ctrl.newDebtor.lastName" class="form-control" placeholder="Last Name"
+                                    required data-error="Bro, you no get password?" />
+                            </div>
+                            <div class="form-group">
+                                <label for="selling_price" class="control-label">Phone Number *</label>
+                                <input type="text" name="phonenumber" ng-minlength="6" id="selling_price" ng-model="ctrl.newDebtor.phoneNumber" class="form-control"
+                                    placeholder="679873401" required data-error="Bro, you no get password?" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button ng-disabled="myForm.firstname.$invalid || myForm.lastname.$invalid || myForm.phonenumber.$invalid" ng-click="ctrl.borrowOutNewDebtor()"
+                                    class="btn btn-success btn-block" data-dismiss="modal">Add new debtor and
+                                    checkout
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-if="ctrl.user.addUserError != 'undefined'">
+                        <span class="error" ng-bind="ctrl.addUserError"></span>
+                    </div>
+                    <div ng-if="ctrl.isModalError" class="alert alert-error alert-dismissable">
+                        <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
+                        <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.modalErrorMessage"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

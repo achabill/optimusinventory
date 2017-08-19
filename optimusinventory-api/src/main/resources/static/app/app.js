@@ -51,6 +51,16 @@ var optimusInventoryApp = angular
                 controller: 'LogsController',
                 controllerAs: 'ctrl'
             })
+            .when('/machineitems', {
+                templateUrl: '/views/machineitems.html',
+                controller: 'MachineItemsController',
+                controllerAs: 'ctrl'
+            })
+            .when('/machines', {
+                templateUrl: '/views/machines.html',
+                controller: 'MachineController',
+                controllerAs: 'ctrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

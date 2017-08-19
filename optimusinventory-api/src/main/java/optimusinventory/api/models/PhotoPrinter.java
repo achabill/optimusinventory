@@ -1,5 +1,5 @@
 package optimusinventory.api.models;
 
-public class PhotoPrinter{
-    
+public class PhotoPrinter {
+
 }

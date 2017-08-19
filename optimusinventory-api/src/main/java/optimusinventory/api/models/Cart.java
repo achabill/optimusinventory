@@ -8,10 +8,11 @@ public class Cart {
 
     public Cart() {
     }
+
     public Cart(List<CartItem> cartItems) {
         this.cartItems = cartItems;
         this.total = 0;
-        for(int i = 0; i < cartItems.size(); i++){
+        for (int i = 0; i < cartItems.size(); i++) {
             this.total += cartItems.get(i).getTotal();
         }
     }
@@ -24,8 +25,11 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-    public int getTotal(){return this.total;}
-    public void setTotal(int total){
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(int total) {
         this.total = total;
     }
 }

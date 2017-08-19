@@ -1,13 +1,16 @@
 .container-padding {
     padding-top: 20px;
 }
-.main-body{
+
+.main-body {
     background-color: white;
 }
+
 .login-background {
     background-color: #f9f9f9;
 }
-.fill-screen{
+
+.fill-screen {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -17,9 +20,10 @@
     top: 0;
 }
 
-.error{
+.error {
     color: red;
 }
+
 .login-color {
     color: #ffffff;
 }

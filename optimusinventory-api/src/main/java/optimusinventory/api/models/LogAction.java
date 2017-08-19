@@ -1,8 +1,9 @@
 package optimusinventory.api.models;
 
-public enum UserLogAction {
-    ADD,
+public enum LogAction {
+    CREATE,
     UPDATE,
     DELETE,
-    LOGIN,
+    READ,
+    LOGIN
 }

@@ -5,14 +5,11 @@ import io.swagger.annotations.ApiOperation;
 import optimusinventory.api.dao.IStockItemLogDao;
 import optimusinventory.api.helpers.IHelpers;
 import optimusinventory.api.models.Privilege;
-import optimusinventory.api.models.StockItem;
 import optimusinventory.api.models.StockItemLog;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController

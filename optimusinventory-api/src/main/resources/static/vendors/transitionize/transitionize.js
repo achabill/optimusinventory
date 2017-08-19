@@ -1,4 +1,3 @@
-
 /**
  * Transitionize 0.0.3
  * https://github.com/abpetkov/transitionize
@@ -27,11 +26,11 @@ module.exports = Transitionize;
  */
 
 function Transitionize(element, props) {
-  if (!(this instanceof Transitionize)) return new Transitionize(element, props);
+    if (!(this instanceof Transitionize)) return new Transitionize(element, props);
 
-  this.element = element;
-  this.props = props || {};
-  this.init();
+    this.element = element;
+    this.props = props || {};
+    this.init();
 }
 
 /**
@@ -41,8 +40,8 @@ function Transitionize(element, props) {
  * @api private
  */
 
-Transitionize.prototype.isSafari = function() {
-  return (/Safari/).test(navigator.userAgent) && (/Apple Computer/).test(navigator.vendor);
+Transitionize.prototype.isSafari = function () {
+    return (/Safari/).test(navigator.userAgent) && (/Apple Computer/).test(navigator.vendor);
 };
 
 /**
@@ -52,13 +51,13 @@ Transitionize.prototype.isSafari = function() {
  * @api private
  */
 
-Transitionize.prototype.init = function() {
-  var transitions = [];
+Transitionize.prototype.init = function () {
+    var transitions = [];
 
-  for (var key in this.props) {
-    transitions.push(key + ' ' + this.props[key]);
-  }
+    for (var key in this.props) {
+        transitions.push(key + ' ' + this.props[key]);
+    }
 
-  this.element.style.transition = transitions.join(', ');
-  if (this.isSafari()) this.element.style.webkitTransition = transitions.join(', ');
+    this.element.style.transition = transitions.join(', ');
+    if (this.isSafari()) this.element.style.webkitTransition = transitions.join(', ');
 };

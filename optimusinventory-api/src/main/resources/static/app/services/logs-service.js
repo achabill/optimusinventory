@@ -5,8 +5,6 @@ optimusInventoryApp
         //var baseEndPoint = window.location.origin + "/api/users";
         //var baseEndPoint = "http://localhost:8080/api/users";
 
-        var service = {
-
-        };
+        var service = {};
         return service;
     }]);

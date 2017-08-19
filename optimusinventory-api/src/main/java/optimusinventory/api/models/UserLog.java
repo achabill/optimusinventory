@@ -9,14 +9,14 @@ public class UserLog {
     private String id;
     private User user;
     private User who;
-    private UserLogAction userLogAction;
+    private LogAction logAction;
     private Date date;
 
 
-    public UserLog(User user, User who, UserLogAction userLogAction, Date date) {
+    public UserLog(User user, User who, LogAction logAction, Date date) {
         this.user = user;
         this.who = who;
-        this.userLogAction = userLogAction;
+        this.logAction = logAction;
         this.date = date;
     }
 
@@ -36,12 +36,12 @@ public class UserLog {
         this.user = user;
     }
 
-    public UserLogAction getUserLogAction() {
-        return userLogAction;
+    public LogAction getUserLogAction() {
+        return logAction;
     }
 
-    public void setUserLogAction(UserLogAction userLogAction) {
-        this.userLogAction = userLogAction;
+    public void setUserLogAction(LogAction logAction) {
+        this.logAction = logAction;
     }
 
     public Date getDate() {

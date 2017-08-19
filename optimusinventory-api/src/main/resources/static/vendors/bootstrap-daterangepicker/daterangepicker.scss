@@ -15,61 +15,60 @@
 
 // The class name to contain everything within.
 $prefix-class: daterangepicker;
-$arrow-size:     7px !default;
+$arrow-size: 7px !default;
 
 //
 // Colors
-$daterangepicker-color:                      inherit !default;
-$daterangepicker-bg-color:                   #fff !default;
+$daterangepicker-color: inherit !default;
+$daterangepicker-bg-color: #fff !default;
 
-$daterangepicker-cell-color:                 $daterangepicker-color !default;
-$daterangepicker-cell-border-color:          transparent !default;
-$daterangepicker-cell-bg-color:              $daterangepicker-bg-color !default;
+$daterangepicker-cell-color: $daterangepicker-color !default;
+$daterangepicker-cell-border-color: transparent !default;
+$daterangepicker-cell-bg-color: $daterangepicker-bg-color !default;
 
-$daterangepicker-cell-hover-color:           $daterangepicker-color !default;
-$daterangepicker-cell-hover-border-color:    $daterangepicker-cell-border-color !default;
-$daterangepicker-cell-hover-bg-color:        #eee !default;
+$daterangepicker-cell-hover-color: $daterangepicker-color !default;
+$daterangepicker-cell-hover-border-color: $daterangepicker-cell-border-color !default;
+$daterangepicker-cell-hover-bg-color: #eee !default;
 
-$daterangepicker-in-range-color:             #000 !default;
-$daterangepicker-in-range-border-color:      transparent !default;
-$daterangepicker-in-range-bg-color:          #ebf4f8 !default;
+$daterangepicker-in-range-color: #000 !default;
+$daterangepicker-in-range-border-color: transparent !default;
+$daterangepicker-in-range-bg-color: #ebf4f8 !default;
 
-$daterangepicker-active-color:               #fff !default;
-$daterangepicker-active-bg-color:            #357ebd !default;
-$daterangepicker-active-border-color:        transparent !default;
+$daterangepicker-active-color: #fff !default;
+$daterangepicker-active-bg-color: #357ebd !default;
+$daterangepicker-active-border-color: transparent !default;
 
-$daterangepicker-unselected-color:           #999 !default;
-$daterangepicker-unselected-border-color:    transparent !default;
-$daterangepicker-unselected-bg-color:        #fff !default;
+$daterangepicker-unselected-color: #999 !default;
+$daterangepicker-unselected-border-color: transparent !default;
+$daterangepicker-unselected-bg-color: #fff !default;
 
 //
 // daterangepicker
-$daterangepicker-width:          278px !default;
-$daterangepicker-padding:        4px !default;
-$daterangepicker-z-index:        3000 !default;
+$daterangepicker-width: 278px !default;
+$daterangepicker-padding: 4px !default;
+$daterangepicker-z-index: 3000 !default;
 
-$daterangepicker-border-size:    1px !default;
-$daterangepicker-border-color:   #ccc !default;
-$daterangepicker-border-radius:  4px !default;
-
+$daterangepicker-border-size: 1px !default;
+$daterangepicker-border-color: #ccc !default;
+$daterangepicker-border-radius: 4px !default;
 
 //
 // Calendar
-$daterangepicker-calendar-margin:              $daterangepicker-padding !default;
-$daterangepicker-calendar-bg-color:            $daterangepicker-bg-color !default;
+$daterangepicker-calendar-margin: $daterangepicker-padding !default;
+$daterangepicker-calendar-bg-color: $daterangepicker-bg-color !default;
 
-$daterangepicker-calendar-border-size:         1px !default;
-$daterangepicker-calendar-border-color:        $daterangepicker-bg-color !default;
-$daterangepicker-calendar-border-radius:       $daterangepicker-border-radius !default;
+$daterangepicker-calendar-border-size: 1px !default;
+$daterangepicker-calendar-border-color: $daterangepicker-bg-color !default;
+$daterangepicker-calendar-border-radius: $daterangepicker-border-radius !default;
 
 //
 // Calendar Cells
-$daterangepicker-cell-size:           20px !default;
-$daterangepicker-cell-width:          $daterangepicker-cell-size !default;
-$daterangepicker-cell-height:         $daterangepicker-cell-size !default;
+$daterangepicker-cell-size: 20px !default;
+$daterangepicker-cell-width: $daterangepicker-cell-size !default;
+$daterangepicker-cell-height: $daterangepicker-cell-size !default;
 
-$daterangepicker-cell-border-radius:  $daterangepicker-calendar-border-radius !default;
-$daterangepicker-cell-border-size:    1px !default;
+$daterangepicker-cell-border-radius: $daterangepicker-calendar-border-radius !default;
+$daterangepicker-cell-border-size: 1px !default;
 
 //
 // Dropdowns
@@ -77,37 +76,37 @@ $daterangepicker-dropdown-z-index: $daterangepicker-z-index + 1 !default;
 
 //
 // Controls
-$daterangepicker-control-height:               30px !default;
-$daterangepicker-control-line-height:          $daterangepicker-control-height !default;
-$daterangepicker-control-color:                #555 !default;
+$daterangepicker-control-height: 30px !default;
+$daterangepicker-control-line-height: $daterangepicker-control-height !default;
+$daterangepicker-control-color: #555 !default;
 
-$daterangepicker-control-border-size:          1px !default;
-$daterangepicker-control-border-color:         #ccc !default;
-$daterangepicker-control-border-radius:        4px !default;
+$daterangepicker-control-border-size: 1px !default;
+$daterangepicker-control-border-color: #ccc !default;
+$daterangepicker-control-border-radius: 4px !default;
 
-$daterangepicker-control-active-border-size:   1px !default;
-$daterangepicker-control-active-border-color:  #08c !default;
+$daterangepicker-control-active-border-size: 1px !default;
+$daterangepicker-control-active-border-color: #08c !default;
 $daterangepicker-control-active-border-radius: $daterangepicker-control-border-radius !default;
 
-$daterangepicker-control-disabled-color:       #ccc !default;
+$daterangepicker-control-disabled-color: #ccc !default;
 
 //
 // Ranges
-$daterangepicker-ranges-color:                #08c !default;
-$daterangepicker-ranges-bg-color:             #f5f5f5 !default;
+$daterangepicker-ranges-color: #08c !default;
+$daterangepicker-ranges-bg-color: #f5f5f5 !default;
 
-$daterangepicker-ranges-border-size:          1px !default;
-$daterangepicker-ranges-border-color:         $daterangepicker-ranges-bg-color !default;
-$daterangepicker-ranges-border-radius:        $daterangepicker-border-radius !default;
+$daterangepicker-ranges-border-size: 1px !default;
+$daterangepicker-ranges-border-color: $daterangepicker-ranges-bg-color !default;
+$daterangepicker-ranges-border-radius: $daterangepicker-border-radius !default;
 
-$daterangepicker-ranges-hover-color:          #fff !default;
-$daterangepicker-ranges-hover-bg-color:       $daterangepicker-ranges-color !default;
-$daterangepicker-ranges-hover-border-size:    $daterangepicker-ranges-border-size !default;
-$daterangepicker-ranges-hover-border-color:   $daterangepicker-ranges-hover-bg-color !default;
-$daterangepicker-ranges-hover-border-radius:  $daterangepicker-border-radius !default;
+$daterangepicker-ranges-hover-color: #fff !default;
+$daterangepicker-ranges-hover-bg-color: $daterangepicker-ranges-color !default;
+$daterangepicker-ranges-hover-border-size: $daterangepicker-ranges-border-size !default;
+$daterangepicker-ranges-hover-border-color: $daterangepicker-ranges-hover-bg-color !default;
+$daterangepicker-ranges-hover-border-radius: $daterangepicker-border-radius !default;
 
-$daterangepicker-ranges-active-border-size:   $daterangepicker-ranges-border-size !default;
-$daterangepicker-ranges-active-border-color:  $daterangepicker-ranges-bg-color !default;
+$daterangepicker-ranges-active-border-size: $daterangepicker-ranges-border-size !default;
+$daterangepicker-ranges-active-border-color: $daterangepicker-ranges-bg-color !default;
 $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !default;
 
 //
@@ -208,7 +207,7 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
 
     &:after {
       top: initial;
-      bottom:-$arrow-suffix-size;
+      bottom: -$arrow-suffix-size;
       border-bottom: initial;
       border-top: $arrow-suffix-size solid $daterangepicker-bg-color;
     }
@@ -498,12 +497,12 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
 
       &.ltr {
         .ranges, .calendar {
-          float:left;
+          float: left;
         }
       }
       &.rtl {
         .ranges, .calendar {
-          float:right;
+          float: right;
         }
       }
     }
@@ -511,7 +510,7 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
     &.ltr {
       direction: ltr;
       text-align: left;
-      .calendar{
+      .calendar {
         &.left {
           clear: left;
           margin-right: 0;
@@ -549,7 +548,7 @@ $daterangepicker-ranges-active-border-radius: $daterangepicker-border-radius !de
     &.rtl {
       direction: rtl;
       text-align: right;
-      .calendar{
+      .calendar {
         &.left {
           clear: right;
           margin-left: 0;

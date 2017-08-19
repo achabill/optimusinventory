@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,7 +41,7 @@ public class UserController {
 
         User oldUser = usersDao.findByUsername(user.getUsername());
         String token = tokenService.getToken(oldUser);
-        if(token != null){
+        if (token != null) {
             throw new Exception("You are already logged in with token: " + token);
         }
 
@@ -52,7 +51,7 @@ public class UserController {
             throw new Exception("Username or password incorrect");
 
         UserAccessToken userAccessToken = new UserAccessToken(oldUser, tokenService.setToken(oldUser));
-        UserLog userLog = new UserLog(oldUser, null, UserLogAction.LOGIN, new Date());
+        UserLog userLog = new UserLog(oldUser, null, LogAction.LOGIN, new Date());
         userLogService.log(userLog);
         return new ResponseEntity<>(userAccessToken, HttpStatus.CREATED);
     }
@@ -72,11 +71,11 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ApiOperation(value = "Sign up", notes = "Sign up a user with the required credentials")
     public ResponseEntity<UserAccessToken> addNewUser(@Valid @RequestBody User user,
-                                                  @RequestParam(value = "token") String token) throws Exception {
+                                                      @RequestParam(value = "token") String token) throws Exception {
 
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_ACCOUNTS);
         String username = user.getUsername();
-        if(helpers.isUsernameAvailable(username)){
+        if (helpers.isUsernameAvailable(username)) {
             throw new Exception("Username is not available");
         }
 
@@ -95,7 +94,7 @@ public class UserController {
             }});
         User newUser = usersDao.save(user);
         String _token = tokenService.setToken(newUser);
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, UserLogAction.ADD, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.CREATE, new Date());
         userLogService.log(userLog);
         return new ResponseEntity<>(new UserAccessToken(newUser, _token), HttpStatus.CREATED);
     }
@@ -135,7 +134,7 @@ public class UserController {
                                                  @RequestParam(value = "token") String token) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_ACCOUNTS);
         usersDao.delete(getUserById(id));
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), null, UserLogAction.DELETE, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), null, LogAction.DELETE, new Date());
         userLogService.log(userLog);
         return new ResponseEntity<>("deleted", HttpStatus.ACCEPTED);
     }
@@ -149,14 +148,14 @@ public class UserController {
                                                @Valid @RequestBody User user) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_ACCOUNTS);
         getUserById(id);
-        if(user.getId() == null || !user.getId().equals(id)){
+        if (user.getId() == null || !user.getId().equals(id)) {
             throw new Exception("User id does not match target id");
         }
-        if(modifypassword){
+        if (modifypassword) {
             user.setPassword(tokenService.digest(user.getPassword()));
         }
         User newUser = usersDao.save(user);
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, UserLogAction.UPDATE, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.UPDATE, new Date());
         userLogService.log(userLog);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
@@ -164,7 +163,7 @@ public class UserController {
     //internal helpers
     private User getUserById(String id) throws Exception {
         User user = usersDao.findById(id);
-        if(user == null){
+        if (user == null) {
             throw new Exception("User with id does not exist");
         }
         return user;

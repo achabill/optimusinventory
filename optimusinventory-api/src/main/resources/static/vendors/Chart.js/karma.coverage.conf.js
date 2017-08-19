@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
 	var configuration = {
 		browsers: ['Firefox'],
 
@@ -15,13 +15,13 @@ module.exports = function(config) {
 				}
 			}]]
 		},
-		
+
 		reporters: ['progress', 'coverage'],
 		coverageReporter: {
 			dir: 'coverage/',
 			reporters: [
-				{ type: 'html', subdir: 'report-html' },
-				{ type: 'lcovonly', subdir: '.', file: 'lcov.info' }
+				{type: 'html', subdir: 'report-html'},
+				{type: 'lcovonly', subdir: '.', file: 'lcov.info'}
 			]
 		}
 	};

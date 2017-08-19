@@ -21,6 +21,9 @@ optimusInventoryApp.controller('TabsController', ['UserService', '$localStorage'
             case 'admin':
                 requiredPrivilege = 'CREATE_SUMMARY';
                 break;
+            case 'machineitems':
+                requiredPrivilege = 'CREATE_MACHINE_ITEMS';
+                break;
             default:
                 requiredPrivilege = 'READ_ITEMS';
                 break;

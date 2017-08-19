@@ -5,14 +5,16 @@
             <form>
                 <div class="form-group">
                     <label for="username" class="control-label">Username</label>
-                    <input type="text" ng-model="ctrl.user.username" id="username" class="form-control" placeholder="Username" required="required"
-                        data-error="Username is required" />
+                    <input type="text" ng-model="ctrl.user.username" id="username" class="form-control"
+                           placeholder="Username" required="required"
+                           data-error="Username is required"/>
                 </div>
                 <div class="form-group">
                     <label for="password" class="control-label">Password</label>
                     <a href="#" class="pull-right">forgot password</a>
-                    <input type="password" ng-model="ctrl.user.password" id="password" class="form-control" placeholder="Password" required="required"
-                        data-error="Bro, you no get password?" />
+                    <input type="password" ng-model="ctrl.user.password" id="password" class="form-control"
+                           placeholder="Password" required="required"
+                           data-error="Bro, you no get password?"/>
                 </div>
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-block" ng-click="ctrl.login()">Sign in</button>

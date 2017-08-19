@@ -1,5 +1,5 @@
 module.exports = {
-	dist: [
-		"dist/*.js"
-	]
+    dist: [
+        "dist/*.js"
+    ]
 };

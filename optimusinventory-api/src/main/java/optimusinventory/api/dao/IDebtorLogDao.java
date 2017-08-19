@@ -1,6 +1,5 @@
 package optimusinventory.api.dao;
 
-import optimusinventory.api.models.Debtor;
 import optimusinventory.api.models.DebtorLog;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
