@@ -48,7 +48,7 @@ public class DebtorController {
                                       @Valid @RequestBody Debtor debtor) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_DEBTORS);
         Debtor newDebtor = debtorsDao.save(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date(), LogAction.CREATE);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date().toLocaleString(), LogAction.CREATE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
@@ -73,7 +73,7 @@ public class DebtorController {
             throw new Exception("Debtor id does not match target id");
         }
         Debtor newDebtor = debtorsDao.save(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date(), LogAction.UPDATE);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), newDebtor, new Date().toLocaleString(), LogAction.UPDATE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>(newDebtor, HttpStatus.CREATED);
     }
@@ -85,7 +85,7 @@ public class DebtorController {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_DEBTORS);
         Debtor debtor = getDebtorById(id);
         debtorsDao.delete(debtor);
-        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), debtor, new Date(), LogAction.DELETE);
+        DebtorLog debtorLog = new DebtorLog(tokenService.tokenValue(token), debtor, new Date().toLocaleString(), LogAction.DELETE);
         debtorLogService.log(debtorLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }

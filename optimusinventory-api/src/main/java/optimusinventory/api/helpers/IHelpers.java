@@ -14,5 +14,6 @@ public interface IHelpers {
     void validateRole(User user, Privilege privilege) throws Exception;
 
     List<Privilege> getAllPrivileges();
+
     List<MachineType> getAllMachineTypes();
 }

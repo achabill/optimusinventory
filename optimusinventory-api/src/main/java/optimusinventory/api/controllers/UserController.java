@@ -51,7 +51,7 @@ public class UserController {
             throw new Exception("Username or password incorrect");
 
         UserAccessToken userAccessToken = new UserAccessToken(oldUser, tokenService.setToken(oldUser));
-        UserLog userLog = new UserLog(oldUser, null, LogAction.LOGIN, new Date());
+        UserLog userLog = new UserLog(oldUser, null, LogAction.LOGIN, new Date().toLocaleString());
         userLogService.log(userLog);
         return new ResponseEntity<>(userAccessToken, HttpStatus.CREATED);
     }
@@ -94,7 +94,7 @@ public class UserController {
             }});
         User newUser = usersDao.save(user);
         String _token = tokenService.setToken(newUser);
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.CREATE, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.CREATE, new Date().toLocaleString());
         userLogService.log(userLog);
         return new ResponseEntity<>(new UserAccessToken(newUser, _token), HttpStatus.CREATED);
     }
@@ -134,7 +134,7 @@ public class UserController {
                                                  @RequestParam(value = "token") String token) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_ACCOUNTS);
         usersDao.delete(getUserById(id));
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), null, LogAction.DELETE, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), null, LogAction.DELETE, new Date().toLocaleString());
         userLogService.log(userLog);
         return new ResponseEntity<>("deleted", HttpStatus.ACCEPTED);
     }
@@ -155,7 +155,7 @@ public class UserController {
             user.setPassword(tokenService.digest(user.getPassword()));
         }
         User newUser = usersDao.save(user);
-        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.UPDATE, new Date());
+        UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.UPDATE, new Date().toLocaleString());
         userLogService.log(userLog);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }

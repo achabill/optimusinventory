@@ -30,6 +30,7 @@ optimusInventoryApp
             },
             addMachine: function (item) {
                 return $http.post(baseEndPoint + '/?token=' + service.token, item).then(function (response) {
+                    console.log(response);
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
@@ -47,6 +48,7 @@ optimusInventoryApp
                     console.log(resposne);
                     return $q.when(response);
                 }, function (error) {
+                    console.log("delete error");
                     return $q.reject(error);
                 });
             }

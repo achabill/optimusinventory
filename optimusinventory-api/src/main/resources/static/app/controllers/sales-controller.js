@@ -1,6 +1,7 @@
 optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesService', 'DebtorService', '$q',
     function (inventoryService, salesService, debtorService, $q) {
         var self = this;
+        console.log("sales controller init");
         self.isSuccess = false;
         self.isError = false;
         self.allItems = [];
@@ -12,6 +13,7 @@ optimusInventoryApp.controller('SalesController', ['InventoryService', 'SalesSer
         var recentSale = {};
 
         self.getAllItems = function () {
+            console.log("get all items from sales page");
             self.allItems = [];
             inventoryService.getAllItems().then(function (response) {
                 for (var i = 0; i < response.data.length; i++)

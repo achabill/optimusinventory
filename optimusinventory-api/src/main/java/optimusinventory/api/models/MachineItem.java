@@ -2,8 +2,6 @@ package optimusinventory.api.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 /**
  * A machine used in the office.
  * This can be a photocopier, printer, scanner, etc..
@@ -11,17 +9,17 @@ import java.util.Date;
 public class MachineItem {
     @Id
     private String id;
-    private Date date;
+    private String date;
     private int quantity;
     private int unitPrice;
-    private int quality;
+    private String quality;
     private int total;
     private Machine machine;
 
     public MachineItem() {
     }
 
-    public MachineItem(Date date, int quantity, int unitPrice, int quality, int total, Machine machine) {
+    public MachineItem(String date, int quantity, int unitPrice, String quality, int total, Machine machine) {
         this.date = date;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -38,11 +36,11 @@ public class MachineItem {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -62,11 +60,11 @@ public class MachineItem {
         this.unitPrice = unitPrice;
     }
 
-    public int getQuality() {
+    public String getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(String quality) {
         this.quality = quality;
     }
 

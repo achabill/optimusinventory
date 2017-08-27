@@ -62,7 +62,7 @@ public class StockItemController {
             item = stockItem;
         }
         StockItem newStockItem = stockItemsDao.save(item);
-        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), newStockItem, new Date(), LogAction.CREATE);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), newStockItem, new Date().toLocaleString(), LogAction.CREATE);
         stockItemLogService.log(stockItemLog);
 
         return new ResponseEntity<>(newStockItem, HttpStatus.CREATED);
@@ -88,7 +88,7 @@ public class StockItemController {
         }
         List<StockItem> newStockItems = stockItemsDao.save(update);
         newStockItems.forEach(item -> {
-            StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), item, new Date(), LogAction.CREATE);
+            StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), item, new Date().toLocaleString(), LogAction.CREATE);
             stockItemLogService.log(stockItemLog);
         });
         return new ResponseEntity<>(newStockItems, HttpStatus.CREATED);
@@ -114,7 +114,7 @@ public class StockItemController {
             throw new Exception("StockItem id does not match target id");
         }
         StockItem newStockItem = stockItemsDao.save(stockItem);
-        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), newStockItem, new Date(), LogAction.UPDATE);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), newStockItem, new Date().toLocaleString(), LogAction.UPDATE);
         stockItemLogService.log(stockItemLog);
         return new ResponseEntity<>(newStockItem, HttpStatus.CREATED);
     }
@@ -126,7 +126,7 @@ public class StockItemController {
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_ITEMS);
         StockItem stockItem = getStockItemById(id);
         stockItemsDao.delete(stockItem);
-        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), stockItem, new Date(), LogAction.DELETE);
+        StockItemLog stockItemLog = new StockItemLog(tokenService.tokenValue(token), stockItem, new Date().toLocaleString(), LogAction.DELETE);
         stockItemLogService.log(stockItemLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }

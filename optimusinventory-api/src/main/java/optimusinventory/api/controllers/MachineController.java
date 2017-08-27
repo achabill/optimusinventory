@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.xml.ws.Response;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class MachineController {
 
     @ApiOperation(value = "Get all machines types")
     @RequestMapping(value = "/types", method = RequestMethod.GET)
-    public ResponseEntity<List<MachineType>> getAllMachineTypes(@RequestParam(value = "token") String token) throws Exception{
+    public ResponseEntity<List<MachineType>> getAllMachineTypes(@RequestParam(value = "token") String token) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.READ_MACHINE);
         return new ResponseEntity<>(helpers.getAllMachineTypes(), HttpStatus.OK);
     }
@@ -52,7 +51,7 @@ public class MachineController {
                                        @Valid @RequestBody Machine machine) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_MACHINE);
         Machine newMachine = machineDao.save(machine);
-        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date(), LogAction.CREATE);
+        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.CREATE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>(newMachine, HttpStatus.CREATED);
     }
@@ -77,7 +76,7 @@ public class MachineController {
             throw new Exception("Machine id does not match target id");
         }
         Machine newMachine = machineDao.save(machine);
-        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date(), LogAction.UPDATE);
+        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.UPDATE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>(newMachine, HttpStatus.CREATED);
     }
@@ -89,7 +88,7 @@ public class MachineController {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_MACHINE);
         Machine machine = getMachineById(id);
         machineDao.delete(machine);
-        MachineLog machineLog = new MachineLog(machine, tokenService.tokenValue(token), new Date(), LogAction.DELETE);
+        MachineLog machineLog = new MachineLog(machine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.DELETE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }

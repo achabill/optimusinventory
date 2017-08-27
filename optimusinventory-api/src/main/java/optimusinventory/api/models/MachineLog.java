@@ -2,20 +2,18 @@ package optimusinventory.api.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 public class MachineLog {
     @Id
     private String id;
     private Machine machine;
     private User user;
-    private Date date;
+    private String date;
     private LogAction logAction;
 
     public MachineLog() {
     }
 
-    public MachineLog(Machine machine, User user, Date date, LogAction logAction) {
+    public MachineLog(Machine machine, User user, String date, LogAction logAction) {
         this.machine = machine;
         this.user = user;
         this.date = date;
@@ -46,11 +44,11 @@ public class MachineLog {
         this.user = user;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

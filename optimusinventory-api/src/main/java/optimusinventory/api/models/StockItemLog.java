@@ -2,17 +2,15 @@ package optimusinventory.api.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 public class StockItemLog {
     @Id
     private String id;
     private User user;
     private StockItem stockItem;
-    private Date date;
+    private String date;
     private LogAction logAction;
 
-    public StockItemLog(User user, StockItem stockItem, Date date, LogAction logAction) {
+    public StockItemLog(User user, StockItem stockItem, String date, LogAction logAction) {
         this.user = user;
         this.stockItem = stockItem;
         this.date = date;
@@ -35,11 +33,11 @@ public class StockItemLog {
         this.stockItem = stockItem;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

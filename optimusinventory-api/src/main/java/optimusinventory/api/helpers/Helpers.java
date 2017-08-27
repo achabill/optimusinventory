@@ -79,7 +79,7 @@ public class Helpers implements IHelpers {
 
     @Override
     public List<MachineType> getAllMachineTypes() {
-        return new ArrayList<MachineType>(){{
+        return new ArrayList<MachineType>() {{
             add(MachineType.PHOTOCOPIER);
             add(MachineType.PRINTER);
             add(MachineType.SCANNER);

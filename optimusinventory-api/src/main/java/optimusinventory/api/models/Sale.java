@@ -3,7 +3,6 @@ package optimusinventory.api.models;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 public class Sale {
     @Id
