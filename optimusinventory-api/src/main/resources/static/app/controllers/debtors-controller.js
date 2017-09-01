@@ -58,7 +58,6 @@ optimusInventoryApp.controller('DebtorsController', ['DebtorService', function (
 
     self.viewSale = function (i) {
         self.sale = self.debtor.sales[i];
-        self.sale.date = new Date(self.sale.date).toLocaleDateString();
     }
     self.getSalesByDebtor = function (index) {
         self.transactions = self.allDebtors[index].sales;
