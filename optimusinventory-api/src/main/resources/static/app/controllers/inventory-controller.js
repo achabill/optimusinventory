@@ -1,9 +1,10 @@
 optimusInventoryApp.controller('InventoryController', ['InventoryService', function (inventoryService) {
     var self = this;
-    //console.log("Inventory controller");
+
     self.isSuccess = false;
     self.isError = false;
     self.allItems = [];
+    self.fileUploadProgressPercentage = "0%";
 
     self.getAllItems = function () {
         //console.log("get all items from contorller");
@@ -51,30 +52,32 @@ optimusInventoryApp.controller('InventoryController', ['InventoryService', funct
         );
     };
     self.postFile = function () {
-        inventoryService.postFile(self.file).then(
-            function (response) {
-                for (var i = 0; i < response.data.length; i++) {
-                    var newItem = response.data[i];
-                    var isInList = false;
-                    for (var i = 0; i < self.allItems.length; i++) {
-                        var _item = self.allItems[i];
-                        if (_item.name == newItem.name && _item.category == newItem.category) {
-                            isInList = true;
-                            self.allItems[i] = newItem;
-                            break;
-                        }
-                    }
-                    if (!isInList) {
-                        self.allItems.push(newItem);
+        inventoryService.postFile(self.file).then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                var newItem = response.data[i];
+                var isInList = false;
+                for (var i = 0; i < self.allItems.length; i++) {
+                    var _item = self.allItems[i];
+                    if (_item.name == newItem.name && _item.category == newItem.category) {
+                        isInList = true;
+                        self.allItems[i] = newItem;
+                        break;
                     }
                 }
-                self.successMessage = "Items add/updated successfully";
-                self.isSuccess = true;
-            },
+                if (!isInList) {
+                    self.allItems.push(newItem);
+                }
+            }
+            self.successMessage = "Items add/updated successfully";
+            self.isSuccess = true;
+            self.file = null;
+            self.fileUploadProgressPercentage = "0%";
+        },
             function (error) {
-                //console.log(error.data);
                 self.isError = true;
                 self.errorMessage = error.data.message;
+            }, function (progress) {
+                self.fileUploadProgressPercentage = Math.floor(progress) + "%";
             }
         );
     };

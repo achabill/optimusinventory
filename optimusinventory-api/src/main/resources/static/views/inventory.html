@@ -85,8 +85,14 @@
                         ng-click="ctrl.postOneItem()">Add
                     </button>
                 </div>
-                <div class="form-group text-center">Add from MicroSoft Excel file</div>
+                <div class="form-group text-center"> OR <br/> Add from MicroSoft Excel file</div>
             </form>
+            <div class="progress progress-striped" ng-show="ctrl.fileUploadProgressPercentage != '0%'">
+                <div class="progress-bar progress-bar-success" ng-style="{width: ctrl.fileUploadProgressPercentage}">
+                    <span class="sr-only">{{ctrl.fileUploadProgressPercentage}}%</span>
+                </div>
+            </div>
+
             <div class="input-group">
                 <div style="position:relative;">
                     <form name="fileForm">
@@ -104,70 +110,70 @@
                         Upload
                     </button>
                 </div>
+
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
 
-    <div class="modal-dialog">
+        <div class="modal-dialog">
 
 
-        <!-- Modal content-->
+            <!-- Modal content-->
 
-        <div class="modal-content">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title">Edit Item</h3>
-                <small class="error">Fields with * are required</small>
-            </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Edit Item</h3>
+                    <small class="error">Fields with * are required</small>
+                </div>
 
-            <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <h3 class="text-center">Add New Item</h3>
-                    <div class="form-group">
-                        <label for="product_name" class="control-label">Product Name</label>
-                        <input type="text" ng-model="ctrl.editItem.name" id="product_name" class="form-control" placeholder="Product Name" required
-                            data-error="Username is required" />
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <label for="product_category" class="control-label">Category</label>
-                            <input type="text" ng-model="ctrl.editItem.category" id="product_category" class="form-control" placeholder="Category" required
+                <div class="modal-body">
+                    <form class="form-horizontal form-label-left">
+                        <h3 class="text-center">Add New Item</h3>
+                        <div class="form-group">
+                            <label for="product_name" class="control-label">Product Name</label>
+                            <input type="text" ng-model="ctrl.editItem.name" id="product_name" class="form-control" placeholder="Product Name" required
+                                data-error="Username is required" />
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="product_category" class="control-label">Category</label>
+                                <input type="text" ng-model="ctrl.editItem.category" id="product_category" class="form-control" placeholder="Category" required
+                                    data-error="Bro, you no get password?" />
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="quantity" class="control-label">Quantity</label>
+                                <input type="number" min="1" id="quantity" ng-model="ctrl.editItem.quantity" class="form-control" placeholder="Quantity"
+                                    required data-error="Bro, you no get password?" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cost_price" class="control-label">Cost Price</label>
+                            <input type="text" id="cost_price" ng-model="ctrl.editItem.costPrice" class="form-control" placeholder="Cost Price" required
                                 data-error="Bro, you no get password?" />
                         </div>
-                        <div class="form-group col-sm-6">
-                            <label for="quantity" class="control-label">Quantity</label>
-                            <input type="number" min="1" id="quantity" ng-model="ctrl.editItem.quantity" class="form-control" placeholder="Quantity"
+                        <div class="form-group">
+                            <label for="selling_price" class="control-label">Selling Price</label>
+                            <input type="text" id="selling_price" ng-model="ctrl.editItem.sellingPrice" class="form-control" placeholder="Selling Price"
                                 required data-error="Bro, you no get password?" />
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cost_price" class="control-label">Cost Price</label>
-                        <input type="text" id="cost_price" ng-model="ctrl.editItem.costPrice" class="form-control" placeholder="Cost Price" required
-                            data-error="Bro, you no get password?" />
-                    </div>
-                    <div class="form-group">
-                        <label for="selling_price" class="control-label">Selling Price</label>
-                        <input type="text" id="selling_price" ng-model="ctrl.editItem.sellingPrice" class="form-control" placeholder="Selling Price"
-                            required data-error="Bro, you no get password?" />
-                    </div>
-                    <div class="form-group text-center">
-                        <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.editItemById()">
+                        <div class="form-group text-center">
+                            <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.editItemById()">
                             Update
                         </button>
-                    </div>
-                </form>
-                <br/>
+                        </div>
+                    </form>
+                    <br/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
         </div>
-
     </div>
-</div>

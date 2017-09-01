@@ -32,20 +32,37 @@ optimusInventoryApp
                 });
             },
             postFile: function (file) {
+
                 var fd = new FormData();
                 fd.append('file', file);
                 fd.append('token', userService.token);
-                //console.log(fd);
-                return $http.post(baseEndPoint + "/file/", fd, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined
+                var defer = $q.defer();
+
+                $http({
+                    method: 'POST',
+                    data: fd,
+                    url: baseEndPoint + '/file/',
+                    headers: { 'Content-Type': undefined },
+                    uploadEventHandlers: {
+                        progress: function (e) {
+                            defer.notify(e.loaded * 100 / e.total);
+                        }
                     }
-                }).then(function (response) {
-                    return $q.when(response);
-                }, function (error) {
-                    return $q.reject(error);
-                });
+                }).then(defer.resolve.bind(defer), defer.reject.bind(defer));
+                return defer.promise;
+                /* })
+                 //console.log(fd);
+                 return $http.post(baseEndPoint + "/file/", fd, {
+                     transformRequest: angular.identity,
+                     headers: {
+                         'Content-Type': undefined
+                     }
+                 }).then(function (response) {
+                     return $q.when(response);
+                 }, function (error) {
+                     return $q.reject(error);
+                 });
+                 */
             },
             updateItemById: function (item, id) {
                 return $http.put(baseEndPoint + '/' + id + '/?token=' + userService.token, item).then(function (response) {
