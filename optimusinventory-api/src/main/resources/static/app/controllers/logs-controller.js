@@ -22,5 +22,11 @@ optimusInventoryApp
         self.resetSuccess = function () {
             self.isSuccess = false;
         };
+
+        self.showDate = function () {
+            console.log(self.date);
+        }
         self.verifyAdmin();
+
+
     }]);

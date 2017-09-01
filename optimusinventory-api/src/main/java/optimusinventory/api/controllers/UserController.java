@@ -70,7 +70,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ApiOperation(value = "Sign up", notes = "Sign up a user with the required credentials")
-    public ResponseEntity<UserAccessToken> addNewUser(@Valid @RequestBody User user,
+    public ResponseEntity<User> addNewUser(@Valid @RequestBody User user,
                                                       @RequestParam(value = "token") String token) throws Exception {
 
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_ACCOUNTS);
@@ -93,10 +93,10 @@ public class UserController {
                 add(Privilege.UPDATE_DEBTORS);
             }});
         User newUser = usersDao.save(user);
-        String _token = tokenService.setToken(newUser);
+
         UserLog userLog = new UserLog(tokenService.tokenValue(token), newUser, LogAction.CREATE, new Date().toLocaleString());
         userLogService.log(userLog);
-        return new ResponseEntity<>(new UserAccessToken(newUser, _token), HttpStatus.CREATED);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @ResponseBody
