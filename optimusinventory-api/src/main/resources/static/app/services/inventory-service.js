@@ -8,7 +8,7 @@ optimusInventoryApp
         var service = {
             token: userService.token,
             getAllItems: function () {
-                return $http.get(baseEndPoint + '/?token=' + service.token).then(function (response) {
+                return $http.get(baseEndPoint + '/?token=' + userService.token).then(function (response) {
                     //console.log(response.data);
                     return $q.when(response);
                 }, function (error) {
@@ -16,7 +16,7 @@ optimusInventoryApp
                 });
             },
             getItemById: function (id) {
-                return $http.get(baseEndPoint + '/' + id + '/?token=' + service.token).then(function (response) {
+                return $http.get(baseEndPoint + '/' + id + '/?token=' + userService.token).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
@@ -25,7 +25,7 @@ optimusInventoryApp
             postOneItem: function (item) {
                 //console.log("posting item..");
                 //console.log(item);
-                return $http.post(baseEndPoint + '/?token=' + service.token, item).then(function (response) {
+                return $http.post(baseEndPoint + '/?token=' + userService.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
@@ -34,7 +34,7 @@ optimusInventoryApp
             postFile: function (file) {
                 var fd = new FormData();
                 fd.append('file', file);
-                fd.append('token', service.token);
+                fd.append('token', userService.token);
                 //console.log(fd);
                 return $http.post(baseEndPoint + "/file/", fd, {
                     transformRequest: angular.identity,
@@ -48,12 +48,13 @@ optimusInventoryApp
                 });
             },
             updateItemById: function (item, id) {
-                return $http.put(baseEndPoint + '/' + id + '/?token=' + service.token, item).then(function (response) {
+                return $http.put(baseEndPoint + '/' + id + '/?token=' + userService.token, item).then(function (response) {
                     return $q.when(response);
                 }, function (error) {
                     return $q.reject(error);
                 });
             }
         };
+
         return service;
     }]);

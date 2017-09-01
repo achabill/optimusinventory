@@ -16,7 +16,7 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
                 service.token = response.data.token;
                 service.user = response.data.user;
 
-                $localStorage.$default({
+                $localStorage.$reset({
                     user: service.user,
                     token: service.token
                 });
@@ -41,8 +41,8 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
         },
         logout: function () {
             return $http.get(baseEndPoint + '/logout?token=' + service.token).then(function (response) {
-                    return $q.when(response);
-                },
+                return $q.when(response);
+            },
                 function (error) {
                     service.error = error.data.message;
                     //console.log(error.data);
@@ -67,11 +67,16 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
                 //console.log(error.data);
                 return $q.reject(error);
             });
+        },
+
+        resetLocalStorage: function () {
+            $localStorage.$reset();
         }
     };
 
     service.user = $localStorage.user;
     service.token = $localStorage.token;
+
     if (service.user == undefined) {
         service.user = {
             "username": ""
@@ -80,5 +85,6 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
     if (service.token == undefined) {
         service.token = "";
     }
+
     return service;
 }]);
