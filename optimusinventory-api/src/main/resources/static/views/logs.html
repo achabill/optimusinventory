@@ -15,162 +15,107 @@
         <li role="presentation" class="active"><a href="#/logs"><i class="fa fa-archive"></i>&nbsp;Logs</a></li>
     </ul>
 
-    <br/>
+    <div class="row">
+        <br/>
+        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+        </div>
+    </div>
+
     <h4>Generate summary and analytics</h4>
-    <hr/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Sales
-                            <small>Sales for a range of time</small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
+    <br/>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4>Stock item sales</h4>
+                <div class="clearfix"></div>
             </div>
+            <div class "x_content">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" name="itemsales" value=""> All stock Items
+                        </label><br/>
+                        <label>
+                            <input type="radio" name="itemsales" value=""> Select stock Item
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <hr/>
+            <button class="btn btn-primary">Print</button>
         </div>
     </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Items
-                            <small>All items</small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4>Stock movement</h4>
+                <div class="clearfix"></div>
             </div>
+            <div class "x_content">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                                <input type="radio" name="itemsales" value=""> All stock items
+                            </label><br/>
+                        <label>
+                                <input type="radio" name="itemsales" value=""> Select stock item
+                            </label>
+                    </div>
+                </div>
+
+            </div>
+            <hr/>
+            <button class="btn btn-primary">Print</button>
         </div>
     </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Add item logs
-                            <small></small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4>Machine logs</h4>
+                <div class="clearfix"></div>
             </div>
+            <div class "x_content">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                                    <input type="radio" name="itemsales" value=""> All machines
+                                </label><br/>
+                        <label>
+                                    <input type="radio" name="itemsales" value=""> Select machine
+                                </label>
+                    </div>
+                </div>
+
+            </div>
+            <hr/>
+            <button class="btn btn-primary">Print</button>
         </div>
     </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Users
-                            <small>All users</small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4>User logs</h4>
+                <div class="clearfix"></div>
             </div>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Debtors
-                            <small></small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
+            <div class "x_content">
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                                        <input type="radio" name="itemsales" value=""> All users
+                                    </label><br/>
+                        <label>
+                                        <input type="radio" name="itemsales" value=""> Select user
+                                    </label>
                     </div>
                 </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
+
             </div>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph x_panel">
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h4>Debtor logs
-                            <small></small>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2016 - December 30, 2017</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-                <div class="x_content">
-                    <div class="demo-container" style="height:1px">
-                        <!-- empty content -->
-                        <div id="chart_plot_03" class="demo-placeholder"></div>
-                    </div>
-                </div>
-            </div>
+            <hr/>
+            <button class="btn btn-primary">Print</button>
         </div>
     </div>
 </div>
+<script src="../js/custom.min.js"></script>

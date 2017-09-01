@@ -22,11 +22,12 @@
 
     <div class="page-title">
         <div class="title_right">
-            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-left">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." ng-model="ctrl.searchString">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                            <button class="btn btn-info" style="color: white;" type="button"><i
+                                class="glyphicon glyphicon-search"></i></button>
                     </span>
                 </div>
             </div>
@@ -82,6 +83,8 @@
                             </tr>
                         </tbody>
                     </table>
+                    <br/>
+                    <button class="btn btn-primary">Print Stock</button>
                 </div>
             </div>
         </div>

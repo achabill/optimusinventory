@@ -1887,7 +1887,8 @@ function init_daterangepicker() {
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'This Year': [moment().startOf('year'), moment().endOf('year')],
         },
         opens: 'left',
         buttonClasses: ['btn btn-default'],
@@ -1964,7 +1965,8 @@ function init_daterangepicker_right() {
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'This Year': [moment().startOf('year'), moment().endOf('year')]
         },
         opens: 'right',
         buttonClasses: ['btn btn-default'],
