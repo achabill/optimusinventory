@@ -3,6 +3,7 @@ optimusInventoryApp.controller('MachineItemsController', ['MachineItemsService',
     self.allMachines = [];
     self.machineItem = {};
     self.allMachineItems = [];
+    self.allMachineQualities = [];
     self.isError = false;
     self.isSuccess = false;
     self.errorMessage = "";
@@ -29,6 +30,14 @@ optimusInventoryApp.controller('MachineItemsController', ['MachineItemsService',
             self.errorMessage = error.data.message;
         });
     };
+
+    self.getallMachineQualities = function () {
+        machineItemsService.getallMachineQualities().then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                self.allMachineQualities.push(response.data[i]);
+            }
+        })
+    }
 
     self.getAllMachines = function () {
         machineItemsService.getAllMachines().then(function (response) {
@@ -61,4 +70,5 @@ optimusInventoryApp.controller('MachineItemsController', ['MachineItemsService',
 
     self.getAllMachineItems();
     self.getAllMachines();
+    self.getallMachineQualities();
 }]);

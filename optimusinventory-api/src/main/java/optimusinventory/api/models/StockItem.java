@@ -12,13 +12,14 @@ public class StockItem {
     private String category;
     private String description;
     private int quantity;
-    private int costPrice;
-    private int sellingPrice;
+    private double costPrice;
+    private double sellingPrice;
 
     public StockItem() {
     }
 
-    public StockItem(String name, String category, String description, int quantity, int costPrice, int sellingPrice) {
+    public StockItem(String name, String category, String description, int quantity, double costPrice,
+            double sellingPrice) {
         this.name = name;
         this.category = category;
         this.description = description;
@@ -67,19 +68,19 @@ public class StockItem {
         this.quantity = quantity;
     }
 
-    public int getCostPrice() {
+    public double getCostPrice() {
         return costPrice;
     }
 
-    public void setCostPrice(int costPrice) {
+    public void setCostPrice(double costPrice) {
         this.costPrice = costPrice;
     }
 
-    public int getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(int sellingPrice) {
+    public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 

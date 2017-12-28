@@ -12,7 +12,7 @@ public class Debtor {
     private String firstName;
     private String lastName;
     @NotNull
-    private int amount;
+    private double amount;
     @NotNull
     private boolean isActive;
     @NotNull
@@ -53,11 +53,11 @@ public class Debtor {
         this.lastName = lastName;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

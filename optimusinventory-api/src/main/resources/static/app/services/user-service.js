@@ -39,6 +39,14 @@ optimusInventoryApp.factory('UserService', ['$http', '$q', '$localStorage', func
                 return $q.reject(error);
             });
         },
+        deleteUserById: function (user) {
+            return $http.delete(baseEndPoint + '/?token=' + service.token, user.id).then(function (response) {
+                return $q.when(response);
+            }, function (err) {
+                service.error = error.data.message;
+                return $q.reject(error);
+            })
+        },
         logout: function () {
             return $http.get(baseEndPoint + '/logout?token=' + service.token).then(function (response) {
                 return $q.when(response);

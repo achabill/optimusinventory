@@ -44,6 +44,9 @@ optimusInventoryApp
             },
             getAllMachines: function () {
                 return machineService.getAllMachines();
+            },
+            getallMachineQualities: function () {
+                return machineService.getAllMachineQualities();
             }
         };
         return service;

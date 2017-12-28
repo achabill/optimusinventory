@@ -41,6 +41,10 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
         });
     };
 
+    self.setUser = function (index) {
+        self.user = self.allUsers[index];
+    };
+
     validatePassword = function (password1, password2) {
         if (password1 == null || password2 == null) {
             return false;
@@ -72,6 +76,11 @@ optimusInventoryApp.controller('UsersController', ['UserService', function (user
             self.isError = true;
             self.errorMessage = error.data.message;
         });
+    };
+
+    self.deleteUser = function () {
+        userService.deleteUserById(self.user);
+        self.user = null;
     }
 
     self.getAllUsers();

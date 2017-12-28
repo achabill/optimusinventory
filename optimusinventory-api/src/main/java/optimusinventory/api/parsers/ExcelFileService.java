@@ -43,7 +43,6 @@ public class ExcelFileService implements IExcelFileService {
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
 
-
                 //For each row, iterate through each columns
                 Iterator<Cell> cellIterator = row.cellIterator();
                 StockItem stockItem = new StockItem();
@@ -53,25 +52,25 @@ public class ExcelFileService implements IExcelFileService {
                     Cell cell = cellIterator.next();
                     count++;
                     switch (count) {
-                        case 1:
-                            continue;
-                        case 2:
-                            stockItem.setName(cell.getStringCellValue());
-                            break;
-                        case 3:
-                            stockItem.setCategory(cell.getStringCellValue());
-                            break;
-                        case 4:
-                            stockItem.setQuantity((int) cell.getNumericCellValue());
-                            break;
-                        case 5:
-                            stockItem.setCostPrice((int) cell.getNumericCellValue());
-                            break;
-                        case 6:
-                            stockItem.setSellingPrice((int) cell.getNumericCellValue());
-                            break;
-                        default:
-                            break;
+                    case 1:
+                        continue;
+                    case 2:
+                        stockItem.setName(cell.getStringCellValue());
+                        break;
+                    case 3:
+                        stockItem.setCategory(cell.getStringCellValue());
+                        break;
+                    case 4:
+                        stockItem.setQuantity((int) cell.getNumericCellValue());
+                        break;
+                    case 5:
+                        stockItem.setCostPrice(cell.getNumericCellValue());
+                        break;
+                    case 6:
+                        stockItem.setSellingPrice(cell.getNumericCellValue());
+                        break;
+                    default:
+                        break;
                     }
                     if (count > 6)
                         break;

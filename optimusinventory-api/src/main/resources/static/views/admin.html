@@ -8,11 +8,26 @@
     </div>
 
     <ul class="nav nav-tabs" style="padding-top: 10px">
-        <li role="presentation" class="active"><a href="#/admin"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a></li>
-        <li role="presentation"><a href="#/users"><i class="fa fa-group"></i>&nbsp;Manage Users</a></li>
-        <li role="presentation"><a href="#/machines"><i class="fa fa-print"></i>&nbsp;Manage Machines</a></li>
-        <li role="presentation"><a href="#/admin_inventory"><i class="fa fa-database"></i>&nbsp;View Stock</a></li>
-        <li role="presentation"><a href="#/logs"><i class="fa fa-archive"></i>&nbsp;Logs</a></li>
+        <li role="presentation" class="active">
+            <a href="#/admin">
+                <i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
+        </li>
+        <li role="presentation">
+            <a href="#/users">
+                <i class="fa fa-group"></i>&nbsp;Manage Users</a>
+        </li>
+        <li role="presentation">
+            <a href="#/machines">
+                <i class="fa fa-print"></i>&nbsp;Manage Machines</a>
+        </li>
+        <li role="presentation">
+            <a href="#/admin_inventory">
+                <i class="fa fa-database"></i>&nbsp;View Stock</a>
+        </li>
+        <li role="presentation">
+            <a href="#/logs">
+                <i class="fa fa-archive"></i>&nbsp;Logs</a>
+        </li>
     </ul>
     <!-- top navigation --
           <!-- /top navigation -->
@@ -21,162 +36,137 @@
     <div role="main">
         <div class="row">
             <br/>
-            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-            </div>
-            <br/>
             <!-- top tiles -->
             <div class="row text-center tile_count">
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+                    <span class="count_top">
+                        <i class="fa fa-user"></i> Total Users</span>
                     <div class="count">4</div>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-clock-o"></i> Average sales</span>
-                    <div class="count">523.50</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+                    <span class="count_top">
+                        <i class="fa fa-clock-o"></i> Total Items sold</span>
+                    <div class="count">520</div>
+                    <span class="count_bottom">
+                        <i class="green">
+                            <i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total sales</span>
-                    <div class="count green">1,500</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                    <span class="count_top">
+                        <i class="fa fa-user"></i> Total Revenue</span>
+                    <div class="count">1,500</div>
+                    <span class="count_bottom">
+                        <i class="green">
+                            <i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total stock</span>
+                    <span class="count_top">
+                        <i class="fa fa-user"></i> Best day</span>
+                    <div class="count">45,500</div>
+                    <span class="count_bottom">12/11/2017</span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top">
+                        <i class="fa fa-user"></i> Worst day</span>
+                    <div class="count">1,500</div>
+                    <span class="count_bottom">12/08/2017</span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top">
+                        <i class="fa fa-user"></i> Total Items in stock</span>
                     <div class="count">300</div>
-                    <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+                    <span class="count_bottom">
+                        <i class="red">
+                            <i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
                 </div>
             </div>
-            <hr/>
-            <!-- /top tiles --><br/>
-        </div>
-        <div class="row top_tiles" style="margin: 10px 0;">
-            <div class="col-md-6 col-sm-12 tile text-center">
-                <span>Total Revenue</span>
-                <h2>CFA 231,809</h2>
-                <span class="sparkline_one" style="height: 160px;">
-                      <canvas width="200" height="60"
-                              style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                  </span>
-            </div>
-            <div class="col-md-6 col-sm-12 tile text-center">
-                <span>Total Revenue</span>
-                <h2>CFA 231,809</h2>
-                <span class="sparkline_one" style="height: 160px;">
-                      <canvas width="200" height="60"
-                              style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                  </span>
-            </div>
-        </div>
-        <hr/>
+            <!-- /top tiles -->
+            <br/>
 
-
+        </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph x_panel">
-                    <div class="row x_title">
-                        <div class="col-md-6">
-                            <h3>Business welfare</h3>
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h3>Revenue</h3>
+                        <div class="filter">
+                            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                <span>December 30, 2014 - January 28, 2015</span>
+                                <b class="caret"></b>
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="demo-container" style="height:250px">
-                            <div id="chart_plot_03" class="demo-placeholder"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12">
+                            <div class="demo-container">
+                                <div id="chart_plot_02" class="demo-placeholder"></div>
+                            </div>
+                            <div class="tiles">
+                                <div class="col-md-4 tile">
+                                    <span>Total Sessions</span>
+                                    <h2>231,809</h2>
+                                    <span class="sparkline11 graph" style="height: 160px;">
+                                        <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                                    </span>
+                                </div>
+                                <div class="col-md-4 tile">
+                                    <span>Total Revenue</span>
+                                    <h2>$231,809</h2>
+                                    <span class="sparkline22 graph" style="height: 160px;">
+                                        <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                                    </span>
+                                </div>
+                                <div class="col-md-4 tile">
+                                    <span>Total Sessions</span>
+                                    <h2>231,809</h2>
+                                    <span class="sparkline11 graph" style="height: 160px;">
+                                        <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                                    </span>
+                                </div>
+                            </div>
 
-        <hr/>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="x_panel fixed_height_320">
-                    <div class="x_title">
-                        <h3>Top selling items</h3>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class "x_content">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="x_panel fixed_height_320">
-                    <div class="x_title">
-                        <h3>Top selling items</h3>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class "x_content">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Red pen</td>
-                                    <td>500</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel tile fixed_height_320 overflow_hidden">
-                    <div class="x_title">
-                        <h3>Item sales</h3>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content text-center">
-                        <canvas class="canvasDoughnut" height="200" width="200" style="margin: 10px 10px 10px 0"></canvas>
+                        </div>
+
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div>
+                                <div class="x_title">
+                                    <h3>Top 5 selling items</h3>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <table class="scroll-view table table-striped table-bordered">
+                                    <thead>
+                                        <th>Item</th>
+                                        <th>Revenue</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A4 brown evenlope</td>
+                                            <td>280%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A4 brown evenlope</td>
+                                            <td>280%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A4 brown evenlope</td>
+                                            <td>280%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A4 brown evenlope</td>
+                                            <td>280%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>A4 brown evenlope</td>
+                                            <td>280%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

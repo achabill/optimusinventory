@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cart {
     List<CartItem> cartItems;
-    int total;
+    double total;
 
     public Cart() {
     }
@@ -25,7 +25,7 @@ public class Cart {
         this.cartItems = cartItems;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return this.total;
     }
 

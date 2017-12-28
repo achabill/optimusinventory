@@ -3,11 +3,13 @@
     <div class="row">
         <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
             <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
-            <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+            <strong>Success!</strong>&nbsp;
+            <span ng-bind="ctrl.successMessage"></span>
         </div>
         <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
             <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
-            <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+            <strong>Error!</strong>&nbsp;
+            <span ng-bind="ctrl.errorMessage"></span>
         </div>
     </div>
     <form name="form">
@@ -28,8 +30,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Quality</label>
-                    <input name="quality" required type="text" ng-model="ctrl.machineItem.quality" placeholder="e.g draft" class="form-control"
-                    />
+                    <select name="quality" required class="form-control" ng-model="ctrl.machineItem.quality" ng-options="x for x in ctrl.allMachineQualities"></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -66,11 +67,21 @@
             <tbody>
                 <tr ng-repeat="machineItem in ctrl.allMachineItems">
                     <td>{{$index + 1}}</td>
-                    <td><span ng-bind="machineItem.machine.name"></span></td>
-                    <td><span ng-bind="machineItem.quantity"></span></td>
-                    <td><span ng-bind="machineItem.quality"></span></td>
-                    <td><span ng-bind="machineItem.unitPrice"></span></td>
-                    <td><span ng-bind="machineItem.total"></span></td>
+                    <td>
+                        <span ng-bind="machineItem.machine.name"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="machineItem.quantity"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="machineItem.quality"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="machineItem.unitPrice"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="machineItem.total"></span>
+                    </td>
                 </tr>
             </tbody>
         </table>

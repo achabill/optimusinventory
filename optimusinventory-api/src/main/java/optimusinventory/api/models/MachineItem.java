@@ -11,15 +11,16 @@ public class MachineItem {
     private String id;
     private String date;
     private int quantity;
-    private int unitPrice;
-    private String quality;
-    private int total;
+    private double unitPrice;
+    private MachineQuality quality;
+    private double total;
     private Machine machine;
 
     public MachineItem() {
     }
 
-    public MachineItem(String date, int quantity, int unitPrice, String quality, int total, Machine machine) {
+    public MachineItem(String date, int quantity, double unitPrice, MachineQuality quality, double total,
+            Machine machine) {
         this.date = date;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -52,27 +53,27 @@ public class MachineItem {
         this.quantity = quantity;
     }
 
-    public int getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public String getQuality() {
+    public MachineQuality getQuality() {
         return quality;
     }
 
-    public void setQuality(String quality) {
+    public void setQuality(MachineQuality quality) {
         this.quality = quality;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 

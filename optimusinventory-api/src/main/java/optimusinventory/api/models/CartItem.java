@@ -1,19 +1,23 @@
 package optimusinventory.api.models;
 
+import javax.validation.constraints.NotNull;
+
 public class CartItem {
+    @NotNull
     private StockItem stockItem;
+    @NotNull
     private int quantity;
-    private int total;
+    @NotNull
+    private double total;
 
     public CartItem() {
     }
 
-    public CartItem(StockItem stockItem, int quantity, int total) {
+    public CartItem(StockItem stockItem, int quantity, double total) {
         this.stockItem = stockItem;
         this.quantity = quantity;
         this.total = total;
     }
-
 
     public StockItem getStockItem() {
         return stockItem;
@@ -31,11 +35,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }

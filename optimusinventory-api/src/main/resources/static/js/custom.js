@@ -555,7 +555,7 @@ function init_flot_chart() {
 
         $.plot($("#chart_plot_02"),
             [{
-                label: "Email Sent",
+                label: "Revenue",
                 data: chart_plot_02_data,
                 lines: {
                     fillColor: "rgba(150, 202, 89, 0.12)"

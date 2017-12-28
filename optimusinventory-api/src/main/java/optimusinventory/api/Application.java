@@ -31,7 +31,6 @@ import javax.servlet.MultipartConfigElement;
 import java.util.Date;
 import java.util.List;
 
-
 @SpringBootApplication
 @EnableAutoConfiguration
 @Configuration
@@ -60,21 +59,13 @@ public class Application extends SpringBootServletInitializer {
 
     @Bean
     public Docket vodAPI() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Optimus Inventory")
-                .description("Rest API Optimus Inventory")
-                .contact("achabill12@gmail.com")
-                .version("1.0")
-                .build();
+        return new ApiInfoBuilder().title("Optimus Inventory").description("Rest API Optimus Inventory")
+                .contact("achabill12@gmail.com").version("1.0").build();
     }
 
     @Bean
@@ -98,7 +89,6 @@ public class Application extends SpringBootServletInitializer {
             }
         };
     }
-
 
     @Bean
     public MultipartConfigElement multipartConfigElement() {

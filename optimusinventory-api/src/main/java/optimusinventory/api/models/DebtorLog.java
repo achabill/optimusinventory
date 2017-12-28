@@ -1,13 +1,19 @@
 package optimusinventory.api.models;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 
 public class DebtorLog {
     @Id
     private String id;
+    @NotNull
     private User user;
+    @NotNull
     private Debtor Debtor;
+    @NotNull
     private String date;
+    @NotNull
     private LogAction logAction;
 
     public DebtorLog(User user, Debtor debtor, String date, LogAction logAction) {
@@ -44,7 +50,6 @@ public class DebtorLog {
     public String getDate() {
         return date;
     }
-
 
     public void setDate(String date) {
         this.date = date;

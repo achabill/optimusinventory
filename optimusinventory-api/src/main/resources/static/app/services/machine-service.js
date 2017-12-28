@@ -20,6 +20,13 @@ optimusInventoryApp
                     return $q.reject(error);
                 });
             },
+            getAllMachineQualities: function () {
+                return $http.get(baseEndPoint + '/qualities/?token=' + userService.token).then(function (response) {
+                    return $q.when(response);
+                }, function (error) {
+                    return $q.reject(error);
+                });
+            },
             getMachineById: function (id) {
                 return $http.get(baseEndPoint + '/' + id + '/?token=' + userService.token).then(function (response) {
                     return $q.when(response);

@@ -7,9 +7,10 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for..." ng-model="ctrl.searchString">
                             <span class="input-group-btn">
-                      <button class="btn btn-info" style="color: white;" type="button"><i
-                              class="glyphicon glyphicon-search"></i></button>
-                    </span>
+                                <button class="btn btn-info" style="color: white;" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -17,11 +18,13 @@
             <div class="x_content">
                 <div ng-if="ctrl.isSuccess" class="alert alert-success alert-dismissable">
                     <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetSuccess()">&times;</a>
-                    <strong>Success!</strong>&nbsp; <span ng-bind="ctrl.successMessage"></span>
+                    <strong>Success!</strong>&nbsp;
+                    <span ng-bind="ctrl.successMessage"></span>
                 </div>
                 <div ng-if="ctrl.isError" class="alert alert-error alert-dismissable">
                     <a class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.resetError()">&times;</a>
-                    <strong>Error!</strong>&nbsp; <span ng-bind="ctrl.errorMessage"></span>
+                    <strong>Error!</strong>&nbsp;
+                    <span ng-bind="ctrl.errorMessage"></span>
                 </div>
                 <div class="table-responsive bg-white card">
                     <table class="table table-striped table-hover table-bordered">
@@ -36,12 +39,21 @@
                         <tbody>
                             <tr ng-repeat="item in ctrl.allItems | filter:ctrl.searchString">
                                 <td>{{$index + 1}}</td>
-                                <td><span ng-bind="item.name"></span></td>
-                                <td><span ng-bind="item.category"></span></td>
-                                <td><span ng-bind="item.quantity"></span></td>
-                                <td><span ng-bind="item.sellingPrice"></span></td>
                                 <td>
-                                    <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="ctrl.setEditItem($index)"><i class="fa fa-pencil"></i>&nbsp; Edit </a>
+                                    <span ng-bind="item.name"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="item.category"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="item.quantity"></span>
+                                </td>
+                                <td>
+                                    <span ng-bind="item.sellingPrice"></span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" ng-click="ctrl.setEditItem($index)">
+                                        <i class="fa fa-pencil"></i>&nbsp; Edit </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -51,7 +63,7 @@
         </div>
         <div class="col-md-4 col-sm-4" style="padding-top: 20px;">
             <form name="myForm">
-                <h3 class="text-center">Edit Item</h3>
+                <h3 class="text-center">New Item</h3>
                 <div class="form-group">
                     <label for="product_name" class="control-label">Product Name</label>
                     <input type="text" name="name" ng-model="ctrl.item.name" id="product_name" class="form-control" placeholder="Product Name"
@@ -76,7 +88,15 @@
                         required data-error="Bro, you no get password?" />
                 </div>
                 <div class="form-group">
-                    <label for="selling_price" class="control-label">Selling Price</label>
+                    <label for="selling_price" class="control-label">Selling Price
+                        <br/>
+                        <span style="font-size:smaller;">
+                            <i>* For items that have multiple unit quantity, the selling price will be the unit sold divided
+                                by the smallest singular unit.
+                                <br/> e.g If A4 papers are sold in 2(twos) at 25 CFA for each pair, then the selling price will
+                                be 25/2 = 12.5</i>
+                        </span>
+                    </label>
                     <input type="text" name="sellingprice" id="selling_price" ng-model="ctrl.item.sellingPrice" class="form-control" placeholder="Selling Price"
                         required data-error="Bro, you no get password?" />
                 </div>
@@ -85,7 +105,8 @@
                         ng-click="ctrl.postOneItem()">Add
                     </button>
                 </div>
-                <div class="form-group text-center"> OR <br/> Add from MicroSoft Excel file</div>
+                <div class="form-group text-center"> OR
+                    <br/> Add from MicroSoft Excel file</div>
             </form>
             <div class="progress progress-striped" ng-show="ctrl.fileUploadProgressPercentage != '0%'">
                 <div class="progress-bar progress-bar-success" ng-style="{width: ctrl.fileUploadProgressPercentage}">
@@ -98,9 +119,7 @@
                     <form name="fileForm">
                         <a class="btn btn-primary" href="javascript:;">
                             Choose File...
-                            <input type="file" required name="file" class="btn-file" name="file_source" size="40"
-                                   file-model="ctrl.file"
-                                   onchange="$('#upload-file-info').html($(this).val().replace('C:\\fakepath\\', ''));">
+                            <input type="file" required name="file" class="btn-file" name="file_source" size="40" file-model="ctrl.file" onchange="$('#upload-file-info').html($(this).val().replace('C:\\fakepath\\', ''));">
                         </a> &nbsp;
                         <span class="label label-info" id="upload-file-info"></span>
                     </form>
@@ -163,8 +182,8 @@
                         </div>
                         <div class="form-group text-center">
                             <button class="btn btn-success btn-block" data-dismiss="modal" ng-click="ctrl.editItemById()">
-                            Update
-                        </button>
+                                Update
+                            </button>
                         </div>
                     </form>
                     <br/>

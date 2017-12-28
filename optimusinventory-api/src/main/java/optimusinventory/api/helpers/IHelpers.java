@@ -3,6 +3,7 @@ package optimusinventory.api.helpers;
 import optimusinventory.api.models.MachineType;
 import optimusinventory.api.models.Privilege;
 import optimusinventory.api.models.User;
+import optimusinventory.api.models.MachineQuality;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface IHelpers {
     List<Privilege> getAllPrivileges();
 
     List<MachineType> getAllMachineTypes();
+
+    List<MachineQuality> getAllMachineQualities();
 }

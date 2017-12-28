@@ -24,7 +24,8 @@ public class MachineController {
     IMachineLogService machineLogService;
     ITokenService tokenService;
 
-    public MachineController(IHelpers helpers, IMachineDao machineDao, IMachineLogService machineLogService, ITokenService tokenService) {
+    public MachineController(IHelpers helpers, IMachineDao machineDao, IMachineLogService machineLogService,
+            ITokenService tokenService) {
         this.helpers = helpers;
         this.machineDao = machineDao;
         this.machineLogService = machineLogService;
@@ -33,9 +34,18 @@ public class MachineController {
 
     @ApiOperation(value = "Get all machines types")
     @RequestMapping(value = "/types", method = RequestMethod.GET)
-    public ResponseEntity<List<MachineType>> getAllMachineTypes(@RequestParam(value = "token") String token) throws Exception {
+    public ResponseEntity<List<MachineType>> getAllMachineTypes(@RequestParam(value = "token") String token)
+            throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.READ_MACHINE);
         return new ResponseEntity<>(helpers.getAllMachineTypes(), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Get all machine qualities")
+    @RequestMapping(value = "/qualities", method = RequestMethod.GET)
+    public ResponseEntity<List<MachineQuality>> getAllMachineQualities(@RequestParam(value = "token") String token)
+            throws Exception {
+        helpers.validateRole(helpers.validateToken(token), Privilege.READ_MACHINE);
+        return new ResponseEntity<>(helpers.getAllMachineQualities(), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Get all Machines")
@@ -47,11 +57,12 @@ public class MachineController {
 
     @ApiOperation(value = "Add a new machine")
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<Machine> add(@RequestParam(value = "token") String token,
-                                       @Valid @RequestBody Machine machine) throws Exception {
+    public ResponseEntity<Machine> add(@RequestParam(value = "token") String token, @Valid @RequestBody Machine machine)
+            throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.CREATE_MACHINE);
         Machine newMachine = machineDao.save(machine);
-        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.CREATE);
+        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(),
+                LogAction.CREATE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>(newMachine, HttpStatus.CREATED);
     }
@@ -59,7 +70,7 @@ public class MachineController {
     @ApiOperation(value = "Get Machine by id")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Machine> getDebtorById(@RequestParam(value = "token") String token,
-                                                 @PathVariable("id") String id) throws Exception {
+            @PathVariable("id") String id) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.READ_MACHINE);
         Machine machine = getMachineById(id);
         return new ResponseEntity<>(machine, HttpStatus.OK);
@@ -68,15 +79,15 @@ public class MachineController {
     @ApiOperation(value = "Update machine")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Machine> updateMachineById(@RequestParam(value = "token") String token,
-                                                     @PathVariable("id") String id,
-                                                     @Valid @RequestBody Machine machine) throws Exception {
+            @PathVariable("id") String id, @Valid @RequestBody Machine machine) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.UPDATE_MACHINE);
         getMachineById(id);
         if (machine.getId() == null || !machine.getId().equals(id)) {
             throw new Exception("Machine id does not match target id");
         }
         Machine newMachine = machineDao.save(machine);
-        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.UPDATE);
+        MachineLog machineLog = new MachineLog(newMachine, tokenService.tokenValue(token), new Date().toLocaleString(),
+                LogAction.UPDATE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>(newMachine, HttpStatus.CREATED);
     }
@@ -84,11 +95,12 @@ public class MachineController {
     @ApiOperation(value = "Delete machine by id")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteMachineById(@RequestParam(value = "token") String token,
-                                                    @PathVariable("id") String id) throws Exception {
+            @PathVariable("id") String id) throws Exception {
         helpers.validateRole(helpers.validateToken(token), Privilege.DELETE_MACHINE);
         Machine machine = getMachineById(id);
         machineDao.delete(machine);
-        MachineLog machineLog = new MachineLog(machine, tokenService.tokenValue(token), new Date().toLocaleString(), LogAction.DELETE);
+        MachineLog machineLog = new MachineLog(machine, tokenService.tokenValue(token), new Date().toLocaleString(),
+                LogAction.DELETE);
         machineLogService.log(machineLog);
         return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
